@@ -3,4 +3,4 @@
 $_PAGES = array('home' ,'connexion','profile');
 
 $HOME_PAGE = 'home';
-$ERROR_404 = '';
+$ERROR_404 = 'home';

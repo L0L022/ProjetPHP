@@ -9,7 +9,7 @@
 <body>
 
   <header>
-    {include 'layout/layout_header.inc.tpl'}
+    {include file="layout/layout_header.inc.tpl"}
   </header>
 {block name="body"}{/block}
 </body>
