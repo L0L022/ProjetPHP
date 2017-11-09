@@ -11,7 +11,7 @@
   <header>
     {include 'layout/layout_header.inc.tpl'}
   </header>
-
+{block name="body"}{/block}
 </body>
 
 </html>
