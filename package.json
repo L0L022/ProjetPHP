@@ -1,0 +1,23 @@
+{
+  "name": "ProjetPHP",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "semantic-ui": "^2.2.13"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/L0L022/ProjetPHP.git"
+  },
+  "author": "",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/L0L022/ProjetPHP/issues"
+  },
+  "homepage": "https://github.com/L0L022/ProjetPHP#readme"
+}

@@ -10,3 +10,7 @@ composer.lock
 
 # sphinx-doc
 _build
+
+#npm
+package-lock.json
+node_modules/
