@@ -2,6 +2,7 @@
   "name": "ProjetPHP",
   "version": "1.0.0",
   "description": "",
+  "license": "GPL-3.0",
   "main": "index.js",
   "dependencies": {
     "semantic-ui": "^2.2.13"
@@ -15,7 +16,6 @@
     "url": "git+https://github.com/L0L022/ProjetPHP.git"
   },
   "author": "",
-  "license": "",
   "bugs": {
     "url": "https://github.com/L0L022/ProjetPHP/issues"
   },
