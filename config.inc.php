@@ -1,6 +1,6 @@
 <?php
 
-$_PAGES = array('home' ,'connexion','profile','recipe');
+$_PAGES = array('home', 'connection', 'profile', 'recipe');
 
 define('DB_HOST', 'mysql-laurent.alwaysdata.net');
 define('DB_PORT', '3306');
