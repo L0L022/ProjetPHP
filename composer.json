@@ -1,4 +1,7 @@
 {
+ "name": "l0l022/projetphp",
+ "description": "",
+ "license": "GPL-3.0",
  "require": {
   "smarty/smarty": "~3.1"
  },
