@@ -16,7 +16,7 @@ if (!in_array($current_page, $_PAGES)) {
 }
 require_once("application/modules/".$current_page.".inc.php");
 $smarty=new Smarty();
-$smarty->caching = true;
+$smarty->caching = false;
 $smarty->cache_lifetime=120;
 $smarty->setTemplateDir('application/views/');
 foreach ($data as $key => $value) {
