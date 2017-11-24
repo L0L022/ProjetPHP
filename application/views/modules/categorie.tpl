@@ -1,4 +1,6 @@
-{extends file="../layout.tpl"} {block name="body"}
+{extends file="../layout.tpl"}
+
+{block name="body"}
 
 <!-- <div class="ui segment">
   <div class="ui items">
