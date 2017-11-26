@@ -2,7 +2,7 @@
 
 {block name="body"}
 
-<div class="ui middle aligned center aligned container grid">
+<div class="ui middle aligned center aligned grid">
   <div class="column">
     <form class="ui large form">
       <div class="ui stacked segment">

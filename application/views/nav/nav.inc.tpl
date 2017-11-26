@@ -1,10 +1,10 @@
-<a class="active item">
+<a class="{if $page eq 'home'}active{/if} item" href="?page=home">
   Accueil
 </a>
-<a class="item">
+<a class="{if $page eq 'recipe'}active{/if} item" href="?page=recipe">
   Recettes
 </a>
-<a class="item">
+<a class="{if $page eq 'profile'}active{/if} item" href="?page=profile">
   Espace perso
 </a>
 <div class="right menu">
@@ -15,7 +15,7 @@
     </div>
     <div class="results"></div>
   </div>
-  <a class="ui item">
-    Déconnexion
+  <a class="ui {if $page eq 'connection'}active{/if} item" href="?page=connection">
+    Connexion
   </a>
 </div>

@@ -22,5 +22,6 @@ $smarty->setTemplateDir('application/views/');
 foreach ($data as $key => $value) {
     $smarty->assign($key, $value);
 }
+$smarty->assign("page", $current_page);
 $smarty->display('modules/'.$current_page.'.tpl');
 //Doc display & cache optimisation
