@@ -10,7 +10,7 @@
   <title>Projet PHP</title>
 
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <link rel="stylesheet" type="text/css" href="application/libraries/semantic/dist/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="application/third_party/semantic/dist/semantic.min.css">
 </head>
 
 <body>
@@ -30,7 +30,7 @@
 
   <!-- JS Includes -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="application/libraries/semantic/dist/semantic.min.js"></script>
+  <script src="application/third_party/semantic/dist/semantic.min.js"></script>
   {block name="javascript"}{/block}
 </body>
 
