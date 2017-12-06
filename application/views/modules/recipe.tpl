@@ -5,9 +5,9 @@
 {else}
  <div class="ui divided link items">
   {foreach $categories as $c}
-  <a class="item" href="?page=recipe&idc={$c.id}">
+  <a class="item" href="{site_url('recipe/category/')}{$c.id}">
    <div class="ui small rounded image">
-    <img src="media/categories/{$c.illustration}">
+    <img src="{base_url('media/categories/')}{$c.illustration}">
    </div>
    <div class="middle aligned content">
     <div class="header">{$c.name}</div>

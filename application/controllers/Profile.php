@@ -1,29 +1,14 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Profile extends CI_Controller {
-    public function index()
-    {
-        // Some example data
-        $data['title'] = "The Smarty parser works lololol";
-        $data['body']  = "This is body text to show that the Smarty Parser works!";
+ private $data = array("page" => "profile");
 
-        // Load the template from the views directory
-        $this->parser->parse("smartytest.tpl", $data);
-    }
+ public function index()
+ {
+  $user = array('name' => 'Laurent', 'firstname' => 'DOITEAU');
 
-    /**
-     * Showing off Smarty 3 template inheritance features
-     *
-     */
-    public function inheritance()
-    {
-        // Some example data
-        $data['title'] = "The Smarty parser works with template inheritance!";
-        $data['body']  = "This is body text to show that Smarty 3 template inheritance works with Smarty Parser.";
-
-        // Load the template from the views directory
-        $this->parser->parse("inheritancetest.tpl", $data);
-
-    }
-
+  $data = &$this->data;
+  $data['user']=$user;
+  $this->parser->parse("modules/profile.tpl", $data);
+ }
 }

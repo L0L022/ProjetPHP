@@ -1,10 +1,10 @@
-<a class="{if $page eq 'home'}active{/if} item" href="?page=home">
+<a class="{if $page eq 'home'}active{/if} item" href="{site_url('home')}">
   Accueil
 </a>
-<a class="{if $page eq 'recipe'}active{/if} item" href="?page=recipe">
+<a class="{if $page eq 'recipe'}active{/if} item" href="{site_url('recipe')}">
   Recettes
 </a>
-<a class="{if $page eq 'profile'}active{/if} item" href="?page=profile">
+<a class="{if $page eq 'profile'}active{/if} item" href="{site_url('profile')}">
   Espace perso
 </a>
 <div class="right menu">
@@ -15,7 +15,7 @@
     </div>
     <div class="results"></div>
   </div>
-  <a class="ui {if $page eq 'connection'}active{/if} item" href="?page=connection">
+  <a class="ui {if $page eq 'connection'}active{/if} item" href="{site_url('connection')}">
     Connexion
   </a>
 </div>
