@@ -9,8 +9,10 @@
 
   <title>Projet PHP</title>
 
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <link rel="stylesheet" type="text/css" href="application/third_party/semantic/dist/semantic.min.css">
+  {link_tag("assets/css/style.css")}
+  {link_tag("application/third_party/semantic/dist/semantic.min.css")}
+  <!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="application/third_party/semantic/dist/semantic.min.css"> -->
 </head>
 
 <body>

@@ -23,6 +23,7 @@ class MY_Output extends CI_Output {
 	    parent::_display($output);
 
   		$CI =& get_instance();
-		$CI->smarty->_debug->display_debug($CI->smarty, TRUE);
+			if ($CI->smarty->debugging)
+				$CI->smarty->_debug->display_debug($CI->smarty, TRUE);
 	}
 }
