@@ -33,5 +33,5 @@
 {/block}
 
 {block name="javascript"}
-<script src="assets/js/connection.js" charset="utf-8"></script>
+<script src="{base_url('assets/js/connection.js')}" charset="utf-8"></script>
 {/block}

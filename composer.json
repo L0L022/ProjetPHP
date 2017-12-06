@@ -6,6 +6,6 @@
   "smarty/smarty": "~3.1"
  },
  "config": {
-  "vendor-dir": "application/libraries"
+  "vendor-dir": "application/third_party"
  }
 }
