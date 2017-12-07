@@ -3,10 +3,10 @@
 {if isset($idc)}
 
  <div class="ui divided link items">
-   {foreach $recipesl.$idc as $c}
-   <a class="item" href="?page=recipe&idr={$c.id}">
+   {foreach $recipes.$idc as $c}
+   <a class="item" href="{site_url('recipe/')}{$c.id}">
     <div class="ui small rounded image">
-     <img src="media/categories/{$c.illustration}">
+     <img src="{base_url('media/categories/')}{$c.illustration}">
     </div>
     <div class="middle aligned content">
      <div class="header">{$c.name}</div>
@@ -25,7 +25,7 @@
     <div class="ui huge header">{$recipe.title}</div>
     </h3>
     <div class="ui attached segment">
-      <img class="ui medium left image" src="media/categories/{$recipe.illustration}">
+      <img class="ui medium left image" src="{base_url('media/categories/')}{$recipe.illustration}">
       <p>Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at. Usu ocurreret referrentur at, cu epicurei appellantur vix. Cum ea laoreet recteque electram, eos choro alterum definiebas in. Vim dolorum definiebas an. Mei ex natum rebum iisque.</p>
     </div>
 
@@ -53,9 +53,9 @@
 {else}
  <div class="ui divided link items">
   {foreach $categories as $c}
-  <a class="item" href="?page=recipe&idc={$c.id}">
+  <a class="item" href="{site_url('recipe/category/')}{$c.id}">
    <div class="ui small rounded image">
-    <img src="media/categories/{$c.illustration}">
+    <img src="{base_url('media/categories/')}{$c.illustration}">
    </div>
    <div class="middle aligned content">
     <div class="header">{$c.name}</div>
