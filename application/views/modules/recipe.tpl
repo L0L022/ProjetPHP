@@ -4,7 +4,7 @@
 
  <div class="ui divided link items">
    {foreach $recipes.$idc as $c}
-   <a class="item" href="{site_url('recipe/')}{$c.id}">
+   <a class="item" href="{site_url('recipe/id/')}{$c.id}">
     <div class="ui small rounded image">
      <img src="{base_url('media/categories/')}{$c.illustration}">
     </div>
