@@ -18,6 +18,37 @@
    {/foreach}
   </div>
 
+{elseif isset($idr)}
+
+
+    <h5 class="ui top attached header">
+    <div class="ui huge header">{$recipe.title}</div>
+    </h3>
+    <div class="ui attached segment">
+      <img class="ui medium left image" src="media/categories/{$recipe.illustration}">
+      <p>Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at. Usu ocurreret referrentur at, cu epicurei appellantur vix. Cum ea laoreet recteque electram, eos choro alterum definiebas in. Vim dolorum definiebas an. Mei ex natum rebum iisque.</p>
+    </div>
+
+    <h5 class="ui attached header">
+      <i class="disabled users icon"></i> Recette pour {$recipe.result_amount} {$recipe.result_label}
+    </h5>
+    <div class="ui attached segment">
+      <p>Dogs are one type of animal</p>
+    </div>
+
+<h5 class="ui attached header">
+    <div class="ui horizontal segments">
+      <div class="ui segment">
+        <p>Top</p>
+      </div>
+      <div class="ui segment">
+        <p>Middle</p>
+      </div>
+      <div class="ui segment">
+        <p>Bottom</p>
+      </div>
+    </div>
+</h5>
 
 {else}
  <div class="ui divided link items">

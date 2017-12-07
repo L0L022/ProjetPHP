@@ -18,6 +18,13 @@ if (is_numeric($_GET['idc'])) {
     $recipesl = array(0 => $entree,1 => $plat,2 => $dessert);
 
     $data['recipesl'] = $recipesl;
+} elseif (is_numeric($_GET['idr'])) {
+    $data['idr'] = $_GET['idr'];
+    $recipe=array("id" => 6, "date_create" => "6/12/2017", "date_modif" => "6/12/2017", "date_validation" => "6/12/2017"
+            , "title" => "Ratatouille", "description" => "Pour commencer avec le sourire !"
+            , "difficulty" => 3, "result_label" => "personnes", "result_amount" => 5, "time preparation" => 560
+            , "explanation" => "LOL","illustration" => "main_course.jpg","time_cooking" => 260, "time_rest" => 0);
+    $data['recipe'] = $recipe;
 } else {
     $categories = array(array("id" => 0, "illustration" => "starter.jpg", "name" => "Entrées", "description" => "Pour commencer avec le sourire !")
  , array("id" => 1, "illustration" => "main_course.jpg", "name" => "Plats", "description" => "Pour avoir le ventre bien plein !")
