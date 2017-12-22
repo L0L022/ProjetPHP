@@ -23,7 +23,7 @@ class Recipe extends CI_Controller
         if (is_numeric($id)) {
             $recipe=array("id" => 6, "date_create" => "6/12/2017", "date_modif" => "6/12/2017", "date_validation" => "6/12/2017"
                          ,"title" => "Ratatouille", "description" => "Pour commencer avec le sourire !"
-                         ,"difficulty" => 3, "result_label" => "personnes", "result_amount" => 5, "time preparation" => 560
+                         ,"difficulty" => 3, "result_label" => "personnes", "result_amount" => 5, "time_preparation" => 560
                          ,"explanation" => "LOL","illustration" => "main_course.jpg","time_cooking" => 260, "time_rest" => 0);
             $data['idr'] = $id;
             $data['recipe'] = $recipe;
