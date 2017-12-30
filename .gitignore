@@ -1,6 +1,5 @@
 composer.phar
 /vendor/
-#/application/libraries
 
 # Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
@@ -12,4 +11,10 @@ composer.phar
 _build
 
 #npm
+package-lock.json
 node_modules/
+
+# semantic
+semantic/src
+semantic/tasks
+semantic/gulpfile.js
