@@ -2,9 +2,9 @@
     exit('No direct script access allowed');
 }
 
-class Profile extends CI_Controller
+class Registration extends CI_Controller
 {
-    private $data = array("page" => "profile");
+    private $data = array("page" => "registration");
 
     public function index()
     {
