@@ -1,5 +1,6 @@
 composer.phar
 /vendor/
+
 #/application/libraries
 /application/config/database.php
 
@@ -13,4 +14,10 @@ composer.phar
 _build
 
 #npm
+package-lock.json
 node_modules/
+
+# semantic
+semantic/src
+semantic/tasks
+semantic/gulpfile.js
