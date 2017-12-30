@@ -12,6 +12,6 @@ class Registration extends CI_Controller
 
         $data = &$this->data;
         $data['user']=$user;
-        $this->parser->parse("modules/profile.tpl", $data);
+        $this->parser->parse("modules/registration.tpl", $data);
     }
 }
