@@ -1,0 +1,7 @@
+body {
+    padding: 1em;
+}
+
+.ui.file.input input[type="file"] {
+    display: none;
+}
