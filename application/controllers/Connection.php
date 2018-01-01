@@ -2,25 +2,25 @@
     exit('No direct script access allowed');
 }
 
-class Connection extends CI_Controller
+class Connection extends MY_Controller
 {
-    private $data = array("page" => "connection");
-
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct('connection');
         $this->load->model('user_model');
     }
 
     public function index()
     {
+        // regarder si il est déjà connecté
+
         $data = &$this->data;
 
-        if ($this->input->post('logout') != null) {
-        } else {
-            $this->load->helper(array('form', 'url'));
-            $this->load->library('form_validation');
+        $this->load->helper('form');
 
+        if ($this->input->post('disable_form_validation') === null) {
+            $this->load->library('form_validation');
+            $this->_load_lang('form_validation');
             $rules = array(
                 array(
                     'field' => 'email',
@@ -36,15 +36,23 @@ class Connection extends CI_Controller
             $this->form_validation->set_rules($rules);
 
             if ($this->form_validation->run()) {
-                if ($this->user_model->is_valid_login($this->input->post('email'), $this->input->post('password'))) {
-                    redirect('profile');
+                $user_id = $this->user_model->get_user_id($this->input->post('email'), $this->input->post('password'));
+                if ($user_id !== null) {
+                    $_SESSION['user_id'] = $user_id;
+                    $this->_redirect();
                 } else {
                     $data['errors'] = array('Wrong login.');
                 }
             } else {
                 $data['errors'] = $this->form_validation->error_array();
             }
-            $this->parser->parse("modules/connection.tpl", $data);
         }
+        $this->parser->parse("modules/connection.tpl", $data);
+    }
+
+    public function logout()
+    {
+        $_SESSION['user_id'] = null;
+        $this->_redirect();
     }
 }

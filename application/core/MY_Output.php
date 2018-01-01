@@ -1,4 +1,6 @@
-<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php  if (!defined('BASEPATH')) {
+    exit('No direct script access allowed');
+}
 
 /**
  * CI Smarty
@@ -17,13 +19,15 @@
  */
 
 
-class MY_Output extends CI_Output {
+class MY_Output extends CI_Output
+{
+    public function _display($output = '')
+    {
+        parent::_display($output);
 
-	public function _display($output = '') {
-	    parent::_display($output);
-
-  		$CI =& get_instance();
-			if ($CI->smarty->debugging)
-				$CI->smarty->_debug->display_debug($CI->smarty, TRUE);
-	}
+        $CI =& get_instance();
+        if ($CI->smarty->debugging) {
+            $CI->smarty->_debug->display_debug($CI->smarty, true);
+        }
+    }
 }

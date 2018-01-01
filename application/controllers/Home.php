@@ -1,18 +1,24 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php  if (!defined('BASEPATH')) {
+    exit('No direct script access allowed');
+}
 
-class Home extends CI_Controller {
-	private $data = array("page" => "home");
-
-	public function index()
-	{
-    $alea = array();
-
-    for ($i=0; $i < 3; $i++) {
-        $alea[$i]=rand()*100;
+class Home extends MY_Controller
+{
+    public function __construct()
+    {
+        parent::__construct('home');
     }
 
-				$data = &$this->data;
-    $data['alea']=$alea;
-    $this->parser->parse("modules/home.tpl", $data);
-	}
+    public function index()
+    {
+        $alea = array();
+
+        for ($i=0; $i < 3; $i++) {
+            $alea[$i]=rand()*100;
+        }
+
+        $data = &$this->data;
+        $data['alea']=$alea;
+        $this->parser->parse("modules/home.tpl", $data);
+    }
 }

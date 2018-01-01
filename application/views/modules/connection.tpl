@@ -10,11 +10,6 @@
             <i class="user icon"></i>
             <input type="text" name="email" placeholder="E-mail address" value="{'email'|set_value}">
           </div>
-          {if not empty(form_error('email'))}
-          <div class="ui pointing red basic label">
-            {'email'|form_error}
-          </div>
-          {/if}
         </div>
         <div class="field {if not empty(form_error('password'))}error{/if}">
           <div class="ui left icon input">
@@ -32,6 +27,7 @@
         {/foreach}
        </ul>
       </div>
+      <input type="hidden" name="redirect" value="{'redirect'|set_value}">
     </form>
 
     <div class="ui message">

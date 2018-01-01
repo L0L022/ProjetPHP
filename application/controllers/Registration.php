@@ -2,13 +2,11 @@
     exit('No direct script access allowed');
 }
 
-class Registration extends CI_Controller
+class Registration extends MY_Controller
 {
-    private $data = array("page" => "registration");
-
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct('registration');
         $this->load->model('user_model');
     }
 
@@ -16,8 +14,9 @@ class Registration extends CI_Controller
     {
         $data = &$this->data;
 
-        $this->load->helper(array('form', 'url'));
+        $this->load->helper('form');
         $this->load->library('form_validation');
+        $this->_load_lang('form_validation');
 
         $rules = array(
             array(

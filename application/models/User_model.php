@@ -1,4 +1,7 @@
-<?php
+<?php  if (!defined('BASEPATH')) {
+    exit('No direct script access allowed');
+}
+
 class User_model extends CI_Model
 {
     public function __construct()
@@ -8,15 +11,24 @@ class User_model extends CI_Model
 
     public function get_user($id)
     {
-        $query = $this->db->get_where('T_USER_USR', array('USR_ID' => $id));
-        return $row = $query->row();
+        $sql = "SELECT USR_ID AS 'id', USR_LOGIN AS 'login', USR_MAIL AS 'mail',
+                       USR_NAME AS 'name', USR_FIRSTNAME AS 'firstname',
+                       USR_LEVEL AS 'level', USR_AVATAR AS 'avatar'
+                FROM T_USER_USR WHERE USR_ID = ?";
+        $query = $this->db->query($sql, array($id));
+        return $row = $query->row_array();
     }
 
-    public function is_valid_login($login, $pass)
+    public function get_user_id($login, $pass)
     {
-        $sql = "SELECT COUNT(*) AS 'result' FROM T_USER_USR WHERE USR_PASS = ? AND (USR_LOGIN = ? OR USR_MAIL = ?)";
+        $sql = "SELECT USR_ID AS 'id' FROM T_USER_USR WHERE USR_PASS = ? AND (USR_LOGIN = ? OR USR_MAIL = ?)";
         $query = $this->db->query($sql, array(hash('sha1', $pass), $login, $login));
-        return $query->row()->result == 1;
+
+        if ($query->num_rows() === 1) {
+            return $query->row()->id;
+        } else {
+            return null;
+        }
     }
 
     public function register($data)
