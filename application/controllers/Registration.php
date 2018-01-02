@@ -22,12 +22,12 @@ class Registration extends MY_Controller
             array(
                 'field' => 'login',
                 'label' => 'Login',
-                'rules' => 'required'
+                'rules' => 'required|callback_login_check'
             ),
             array(
                 'field' => 'mail',
                 'label' => 'Email',
-                'rules' => 'required|valid_email'
+                'rules' => 'required|valid_email|callback_mail_check'
             ),
             array(
                 'field' => 'name',
@@ -73,5 +73,25 @@ class Registration extends MY_Controller
         }
 
         $this->parser->parse("modules/registration.tpl", $data);
+    }
+
+    public function login_check($str)
+    {
+        if ($this->user_model->login_exists($str)) {
+            $this->form_validation->set_message('login_check', 'The {field} field is not unique.');
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function mail_check($str)
+    {
+        if ($this->user_model->mail_exists($str)) {
+            $this->form_validation->set_message('mail_check', 'The {field} field is not unique.');
+            return false;
+        } else {
+            return true;
+        }
     }
 }

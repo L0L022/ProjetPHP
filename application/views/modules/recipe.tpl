@@ -1,15 +1,16 @@
-{extends file="../layout.tpl"} {block name="body"} {if isset($idc)}
+{extends file="../layout.tpl"} {block name="body"}
 
+{if isset($idc)}
 <div class="ui divided link items">
-  {foreach $recipes.$idc as $c}
-  <a class="item" href="{site_url('recipe/id/')}{$c.id}">
+  {foreach $recipes as $r}
+  <a class="item" href="{site_url('recipe/id/')}{$r.id}">
     <div class="ui small rounded image">
-      <img src="{base_url('media/categories/')}{$c.illustration}">
+      <img src="{base_url('media/categories/')}{$r.illustration}">
     </div>
     <div class="middle aligned content">
-      <div class="header">{$c.name}</div>
+      <div class="header">{$r.title}</div>
       <div class="description">
-        <p>{$c.description}</p>
+        <p>{$r.description}</p>
       </div>
     </div>
   </a>
@@ -17,10 +18,6 @@
 </div>
 
 {elseif isset($idr)}
-
-
-
-
 <div class="ui horizontal segments">
   <div class="ui segment">
     <h1>{$recipe.title}</h1>
@@ -83,7 +80,6 @@
   </div>
 </div>
 
-
 {else}
 <div class="ui divided link items">
   {foreach $categories as $c}
@@ -92,7 +88,7 @@
       <img src="{base_url('media/categories/')}{$c.illustration}">
     </div>
     <div class="middle aligned content">
-      <div class="header">{$c.name}</div>
+      <div class="header">{$c.label}</div>
       <div class="description">
         <p>{$c.description}</p>
       </div>

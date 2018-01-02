@@ -110,11 +110,25 @@ CREATE TABLE T_COMMENT_COM (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 
-insert into T_USER_USR values(0,'napoleon789','laurentdoiteau@free.fr','Laurent','DOITEAU',sha1('pwdtest'),default,default)
+insert into T_USER_USR values(DEFAULT,'napoleon789','laurentdoiteau@free.fr','Laurent','DOITEAU',sha1('pwdtest'),default,default);
+insert into T_USER_USR values(DEFAULT,'super_loic','superloic@lalaland.lalaland','Loïc','Escales',sha1('super mot de passe'),default,default);
+insert into T_USER_USR values(DEFAULT,'test','test@test.test','Test','TEST',sha1('test'),default,default);
 
-insert into T_CATEGORY_CAT values(0,'dessert','C\'est bon ! wow!','dessert.jpg')
+insert into T_CATEGORY_CAT values(DEFAULT,'Entrées','Pour commencer avec le sourire !','starter.jpg');
+insert into T_CATEGORY_CAT values(DEFAULT,'Plats','Pour avoir le ventre bien plein !','main_course.jpg');
+insert into T_CATEGORY_CAT values(DEFAULT,'Desserts','Pour finir en beauté !','dessert.jpg');
 
+insert into T_RECIPE_RCP (RCP_TITLE, RCP_DESCRIPTION, RCP_ILLUSTRATION, USR_ID, RCP_NBPERSONNE) values ('Salade', 'Pour commencer avec le sourire !', 'starter.jpg', 3, 0), ('Fromage & salade', 'Pour commencer avec le sourire !', 'starter.jpg', 1, 0), ('Cake olive', 'Pour commencer avec le sourire !', 'starter.jpg', 2, 0), ('Ratatouille', 'Pour avoir le ventre bien plein !', 'main_course.jpg', 1, 0),('Frite & steak', 'Pour avoir le ventre bien plein !', 'main_course.jpg', 1, 0),('Pizza', 'Pour avoir le ventre bien plein !', 'main_course.jpg', 1, 0),('Mugcake', 'Pour finir en beauté !', 'dessert.jpg', 2, 0),('Crème aux oeufs', 'Pour finir en beauté !', 'dessert.jpg', 1, 0),('Chococo', 'Pour finir en beauté !', 'dessert.jpg', 3, 0);
 
+insert into TJ_CAT_RCP values(0, 1);
+insert into TJ_CAT_RCP values(0, 2);
+insert into TJ_CAT_RCP values(0, 3);
+insert into TJ_CAT_RCP values(1, 4);
+insert into TJ_CAT_RCP values(1, 5);
+insert into TJ_CAT_RCP values(1, 6);
+insert into TJ_CAT_RCP values(2, 7);
+insert into TJ_CAT_RCP values(2, 8);
+insert into TJ_CAT_RCP values(2, 9);
 
 -- création des clés étrangéres
 

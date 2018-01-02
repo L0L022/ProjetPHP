@@ -8,7 +8,7 @@
       <p>Bienvenu {$user.name} {$user.firstname}</p>
       <p>Voici votre login --> {$user.login}</p>
       <p>Voici votre email --> {$user.mail}</p>
-      <p>Voici votre mot de passe --> {$user.pwd}</p>
+      <p>Voici votre mot de passe --> {$user.pass}</p>
       <p>Voici votre avatar --> {$user.avatar}</p>
     </div>
   </div>
@@ -20,7 +20,7 @@
     {*<div class="ui attached segment">
       {foreach $user.recettes as $value}
         <div class="ui brown segment">
-          <a href="{site_url('recipe/id/')}{$value.id}">{$value.name}</a></br>
+          <a href="{site_url('recipe/id/')}{$value.id}">{$value.title}</a></br>
         </div>
       {/foreach}
     </div>
@@ -36,7 +36,7 @@
               <img class="ui fluid rounded image" src="{base_url('media/categories/')}{$value.illustration}">
             </div>
             <div class="twelve wide column">
-              <h5>{$value.name}</h5>
+              <h5>{$value.title}</h5>
               <p>{$value.description}</p>
             </div>
           </div>
