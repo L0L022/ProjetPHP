@@ -50,18 +50,7 @@
 
 <div class="ui horizontal segments">
   <div class="ui black segment">
-    <p><i class="disabled users icon"></i> Recette pour {$recipe.result_amount} {$recipe.result_label}
-    </p>
-    {* <form class="ui form">
-<input type="number" name="quantity" min="1" max="5">
-</form>
-    <div class="ui action input">
-      <input placeholder="Search..." type="text">
-      <div class="ui ignored icon font buttons">
-        <a class="increase ui button"> <i class="plus icon"></i></a>
-        <a class="decrease ui button"> <i class="minus icon"></i></a>
-      </div>
-    </div> *}
+    <p><i class="disabled users icon"></i> Recette pour {$recipe.result_amount} {$recipe.result_label}</p>
   </div>
   <div class="ui black segment">
     <p><i class="hourglass half icon"></i> {$recipe.time_preparation} sec de preparation</p>
