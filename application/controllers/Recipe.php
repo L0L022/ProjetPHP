@@ -2,9 +2,12 @@
     exit('No direct script access allowed');
 }
 
-class Recipe extends CI_Controller
+class Recipe extends MY_Controller
 {
-    private $data = array("page" => "recipe");
+    public function __construct()
+    {
+        parent::__construct('recipe');
+    }
 
     public function index()
     {
