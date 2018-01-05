@@ -83,6 +83,12 @@
   </div>
 </div>
 
+<div class = "ui center aligned top attached segment">
+  <h2 class="ui header">Espace commentaire</h2>
+</div>
+<div class = "ui attached segment">
+  Les commentaire
+</div>
 
 {else}
 <div class="ui divided link items">
