@@ -11,7 +11,7 @@
 
 <div class="ui middle aligned center aligned grid">
   <div class="column">
-    <form class="ui large form {if not empty($errors)}error{/if}" method="post" accept-charset="utf-8">
+    <form class="ui large form {if not empty($errors)}error{/if}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
       <div class="ui stacked segment">
        <div class="field {if not empty(form_error('login'))}error{/if}">
          <div class="ui left icon input">

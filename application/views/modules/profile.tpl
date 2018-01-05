@@ -7,7 +7,7 @@
 <div class="ui grid">
   <div class="five wide column">
     <div class="ui black top attached segment">
-      <img class="ui medium rounded image" src="/images/wireframe/square-image.png">
+      <img class="ui medium rounded image" src="{if $user.avatar eq ''}/images/wireframe/square-image.png{else}{base_url('media/avatars/')}{$user.avatar}{/if}">
       <h2>{$user.name} {$user.firstname}</h2>
       <h4>{$user.login}</h4>
       <form method="get" action="{site_url('profile/edite_profil')}">

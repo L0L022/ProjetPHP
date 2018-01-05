@@ -42,7 +42,7 @@ class Registration extends MY_Controller
             array(
                 'field' => 'avatar',
                 'label' => 'Avatar',
-                'rules' => 'required'
+                'rules' => 'callback_avatar_check'
             ),
             array(
                 'field' => 'pass',
@@ -67,9 +67,14 @@ class Registration extends MY_Controller
                 $data['errors'] = array('Tout est ok');
             } else {
                 $data['errors'] = array('Prob de BDD');
+                // remove avatar
             }
         } else {
             $data['errors'] = $this->form_validation->error_array();
+            if (isset($_POST['avatar'])) {
+                print_r($_POST['avatar']);
+                unlink('./media/avatars/'.$_POST['avatar']);
+            }
         }
 
         $this->parser->parse("modules/registration.tpl", $data);
@@ -93,5 +98,28 @@ class Registration extends MY_Controller
         } else {
             return true;
         }
+    }
+
+    public function avatar_check()
+    {
+        if (isset($_FILES['avatar'])) {
+            $config['upload_path']          = './media/avatars/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['overwrite']            = true;
+            // $config['max_size']             = 100;
+            // $config['max_width']            = 1024;
+            // $config['max_height']           = 768;
+            $config['encrypt_name']         = true;
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload('avatar')) {
+                $this->form_validation->set_message('avatar_check', '{field}: '.$this->upload->display_errors('', ''));
+                return false;
+            } else {
+                $_POST['avatar'] = $this->upload->data()['file_name'];
+            }
+        }
+        return true;
     }
 }
