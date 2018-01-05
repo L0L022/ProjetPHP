@@ -1,5 +1,8 @@
 {extends file="../layout.tpl"}
 {block name="body"}
+<div class="ui center aligned segment">
+  <h2 class="ui header">Profil</h2>
+</div>
 
 <div class="ui grid">
   <div class="five wide column">

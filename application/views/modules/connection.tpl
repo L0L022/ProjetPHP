@@ -1,6 +1,10 @@
 {extends file="../layout.tpl"}
 
 {block name="body"}
+<div class="ui center aligned segment">
+  <h2 class="ui header">Connexion</h2>
+</div>
+
 <div class="ui middle aligned center aligned grid">
   <div class="column">
     <form class="ui large form {if not empty($errors)}error{/if}" method="post" accept-charset="utf-8">

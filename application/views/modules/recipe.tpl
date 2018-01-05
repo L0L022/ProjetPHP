@@ -1,6 +1,23 @@
 {extends file="../layout.tpl"} {block name="body"}
 
 {if isset($idc)}
+<div class="ui center aligned segment">
+  <div class="ui grid">
+    <div class="row">
+      <div class="three wide column">
+        <button class="ui small basic labeled icon button">
+          <i class="left chevron icon"></i>
+          Retour vers categorie
+        </button>
+      </div>
+      <div class="ten wide column">
+        <h2 class="ui header">Nom de la categorie</h2>
+      </div>
+      <div class="three wide column">
+      </div>
+    </div>
+  </div>
+</div>
 <div class="ui divided link items">
   {foreach $recipes as $r}
   <a class="item" href="{site_url('recipe/id/')}{$r.id}">
@@ -88,6 +105,11 @@
 </div>
 
 {else}
+
+<div class="ui center aligned segment">
+  <h2 class="ui header">Categorie</h2>
+</div>
+
 <div class="ui divided link items">
   {foreach $categories as $c}
   <a class="item" href="{site_url('recipe/category/')}{$c.id}">
