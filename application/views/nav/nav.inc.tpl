@@ -8,9 +8,6 @@
 <a class="{if $page eq 'profile'}active{/if} item" href="{site_url('profile')}">
   Profil
 </a>
-<a class="{if $page eq 'edition'}active{/if} item" href="{site_url('edition')}">
-  Creer recette
-</a>
 {/if}
 <div class="right menu">
   <div class="ui category search item">

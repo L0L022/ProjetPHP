@@ -39,4 +39,10 @@ class Recipe extends MY_Controller
         $data['recipes'] = $this->recipe_model->in_category($id);
         $this->parser->parse("modules/recipe.tpl", $data);
     }
+
+    public function edition()
+    {
+        $data = &$this->data;
+        $this->parser->parse("modules/edit_recipe.tpl", $data);
+    }
 }
