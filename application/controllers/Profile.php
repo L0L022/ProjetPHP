@@ -46,4 +46,10 @@ class Profile extends MY_Controller
             // $this->user_model->delete(array('id' => $_SESSION['user_id']));
         }
     }
+
+    public function edite_profil()
+    {
+        $data = &$this->data;
+        $this->parser->parse("modules/edit_profil.tpl", $data);
+    }
 }

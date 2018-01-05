@@ -1,21 +1,12 @@
 {extends file="../layout.tpl"}
 
 {block name="body"}
-<article class="">
 
-  <p>Je suis l'édito</p>
+<div class="ui center aligned segment">
+  <h2 class="ui header">News</h2>
+</div>
 
-</article>
-
-<article class="">
-
-  <ul>
-    {foreach $alea as $value}
-
-      <li>{$value}</li>
-
-    {/foreach}
-  </ul>
-
-</article>
+<div class="ui grey attached segment">
+les nouvelles
+</div>
 {/block}
