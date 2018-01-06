@@ -7,7 +7,7 @@
 <div class="ui grid">
   <div class="five wide column">
     <div class="ui black top attached segment">
-      <img class="ui medium rounded image" src="{if $user.avatar eq ''}/images/wireframe/square-image.png{else}{base_url('media/avatars/')}{$user.avatar}{/if}">
+      <img class="ui medium rounded image" src="{if $user.avatar eq ''}{base_url('media/avatars/Default.png')}{else}{base_url('media/avatars/')}{$user.avatar}{/if}">
       <h2>{$user.name} {$user.firstname}</h2>
       <h4>{$user.login}</h4>
       <form method="get" action="{site_url('profile/edite_profil')}">
@@ -18,11 +18,20 @@
   <div class="eleven wide column">
 
     <div class="ui yellow top attached segment">
-        <p>Nombre de recettes : </p>
-        <form method="get" action="{site_url('recipe/edition')}">
-            <button class="ui inverted green button" type="submit">Nouvelle recette</button>
-        </form>
+      <div class="ui grid">
+        <div class="row">
+          <div class="twelve wide column">
+              <p>Nombre de recettes : </p>
+          </div>
+          <div class="four wide column">
+            <form method="get" action="{site_url('recipe/edition')}">
+                <button class="ui inverted green button" type="submit">Nouvelle recette</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
+
     <div class="ui grey attached segment">
       <div class="ui divided link items">
       {foreach $user.recettes as $value}
@@ -32,13 +41,20 @@
               <div class="four wide column">
                 <img class="ui fluid rounded image" src="{base_url('media/categories/')}{$value.illustration}">
               </div>
-              <div class="twelve wide column">
-                <h5>{$value.name}</h5>
-                <p>{$value.description}</p>
-                <div class="ui basic right aligned segment">
-                  <button class="positive ui button">Modifier</button>
-                  <button class="negative ui button">Supprimer</button>
-                </div>
+              <div class="nine wide column">
+                <div class="middle aligned content">
+                <h4 class="ui black header">{$value.title}</h3>
+                <h5 class="ui black header">{$value.description}</h4>
+              </div>
+              </div>
+              <div class="three wide column">
+                  <form method="get" action="{site_url('recipe/edition')}">
+                    <button class="fluid positive ui button">Modifier</button>
+                  </form>
+                </br>
+                  <form method="get" action="{site_url('recipe/edition')}">
+                    <button class="fluid negative ui button">Supprimer</button>
+                  </form>
               </div>
             </div>
           </div>
