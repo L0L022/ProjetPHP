@@ -35,7 +35,7 @@
     </form>
 
     <div class="ui message">
-      New to us? <a href="{'registration'|site_url}">Sign Up</a>
+      New to us? <a href="{site_url('profile/edit/new')}">Sign Up</a>
     </div>
   </div>
 </div>

@@ -5,6 +5,10 @@
 {/block}
 
 {block name="body"}
+<div class="ui center aligned segment">
+  <h2 class="ui header">Modifier son avatar</h2>
+</div>
+
 <div class="ui middle aligned center aligned grid">
   <div class="column">
    <img src="{base_url('media/avatars/')}{$avatar}" alt="">
@@ -22,7 +26,7 @@
         </div>
         <input type="submit" name="upload" value="Upload avatar" class="ui fluid large teal button">
         <br>
-        <input type="submit" name="remove" value="Remove avatar" class="ui fluid large teal button">
+        {if $avatar ne ""}<input type="submit" name="remove" value="Remove avatar" class="ui fluid large teal button">{/if}
       </div>
       <div class="ui error message">
        <ul class="list">

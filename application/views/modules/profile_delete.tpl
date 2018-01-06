@@ -6,20 +6,26 @@
 
 {block name="body"}
 <div class="ui center aligned segment">
-  <h2 class="ui header">S'enregistrer</h2>
+  <h2 class="ui header">Supprimer votre compte</h2>
 </div>
 
 <div class="ui middle aligned center aligned grid">
   <div class="column">
     <form class="ui large form {if not empty($errors)}error{/if}" method="post" accept-charset="utf-8">
       <div class="ui stacked segment">
+        Êtes-vous sûr de supprimer votre compte ? </br>
+        Cela supprimera toutes vos recettes mais laissera vos commentaire sur le site.
+        </br>
+        </br>
        <div class="ui checkbox">
          <input name="confirmation" type="checkbox">
-         <label>Delete my profile</label>
+         <label>Oui, je veux.</label>
        </div>
-        <!-- <div class="ui fluid large teal submit button">Register</div> -->
+       </br>
+       </br>
         <input type="submit" name="delete" value="Supprimer" class="ui fluid large red button">
-      </div>
+      </br>
+
       <div class="ui error message">
        <ul class="list">
         {foreach $errors as $error}
@@ -28,6 +34,10 @@
        </ul>
       </div>
     </form>
+      <form method="get" action="{site_url('profile/view/')}{$user_id}">
+        <input type="submit" name="return" value="Annuler" class="ui fluid large green button">
+      </form>
+      </div>
   </div>
 </div>
 {/block}
