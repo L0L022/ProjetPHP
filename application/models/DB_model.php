@@ -80,7 +80,7 @@ abstract class DB_model extends CI_Model
         if (!$this->id_exists($data['id'])) {
             show_error('Model, impossible de mettre à jour, id existe pas.');
         }
-        $this->db->set(to_real_name($data));
+        $this->db->set($this->to_real_name($data));
         $this->db->where($this->columns['id'], $data['id']);
         if ($this->db->update($this->table) === false) {
             show_error('Model, impossible de mettre à jour la bdd.');
