@@ -9,40 +9,39 @@ class Recipe extends MY_Controller
         parent::__construct('recipe');
         $this->load->model('category_model');
         $this->load->model('recipe_model');
+        $this->load->model('comment_model');
     }
 
-    public function index()
+    public function view($id)
+    {
+        $data = &$this->data;
+        $data['id'] = $id;
+        $data['recipe'] = $this->recipe_model->get(array('id' => $id))[0];
+        $data['comments'] = $this->comment_model->get();
+        $this->parser->parse('modules/recipe/view.tpl', $data);
+    }
+
+    public function edit($id)
+    {
+        $data = &$this->data;
+        $data['id'] = $id;
+        $data['recipe'] = $this->recipe_model->get(array('id' => $id))[0];
+        $this->parser->parse('modules/recipe/edit.tpl', $data);
+    }
+
+    public function categories()
     {
         $data = &$this->data;
         $data['categories'] = $this->category_model->get();
-        $this->parser->parse("modules/recipe.tpl", $data);
+        $this->parser->parse('modules/recipe/categories.tpl', $data);
     }
 
-    public function id($id = null)
+    public function category($id)
     {
         $data = &$this->data;
-        if (is_numeric($id)) {
-            // $recipe=array("id" => 6, "date_create" => "6/12/2017", "date_modif" => "6/12/2017", "date_validation" => "6/12/2017"
-            //              ,"title" => "Ratatouille", "description" => "Pour commencer avec le sourire !"
-            //              ,"difficulty" => 3, "result_label" => "personnes", "result_amount" => 5, "time_preparation" => 560
-            //              ,"explanation" => "LOL","illustration" => "main_course.jpg","time_cooking" => 260, "time_rest" => 0);
-            $data['idr'] = $id;
-            $data['recipe'] = $this->recipe_model->get(array('id' => $id))[0];
-        }
-        $this->parser->parse("modules/recipe.tpl", $data);
-    }
-
-    public function category($id = null)
-    {
-        $data = &$this->data;
-        $data['idc'] = $id;
+        $data['id'] = $id;
+        $data['category'] = $this->category_model->get(array('id' => $id))[0];
         $data['recipes'] = $this->recipe_model->in_category($id);
-        $this->parser->parse("modules/recipe.tpl", $data);
-    }
-
-    public function edition()
-    {
-        $data = &$this->data;
-        $this->parser->parse("modules/edit_recipe.tpl", $data);
+        $this->parser->parse("modules/recipe/category.tpl", $data);
     }
 }
