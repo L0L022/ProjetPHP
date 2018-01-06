@@ -10,8 +10,20 @@
       <img class="ui medium rounded image" src="{if $user.avatar eq ''}{base_url('media/avatars/Default.png')}{else}{base_url('media/avatars/')}{$user.avatar}{/if}">
       <h2>{$user.name} {$user.firstname}</h2>
       <h4>{$user.login}</h4>
-      <form method="get" action="{site_url('profile/edite_profil')}">
-          <button class="ui basic black button" type="submit">Editer profil</button>
+      <form method="get" action="{site_url('profile/edit/')}{$user_id}">
+          <button class="ui basic black fluid button" type="submit">Editer profil</button>
+      </form>
+      </br>
+      <form method="get" action="{site_url('profile/avatar/')}{$user_id}">
+          <button class="ui basic black fluid button" type="submit">Modification avatar</button>
+      </form>
+    </br>
+      <form method="get" action="{site_url('profile/password/')}{$user_id}">
+          <button class="ui basic fluid black button" type="submit">Changer mot de passe</button>
+      </form>
+    </br>
+      <form method="get" action="{site_url('profile/delete/')}{$user_id}">
+          <button class="ui basic fluid red button" type="submit">Supprimer mon compte</button>
       </form>
     </div>
   </div>

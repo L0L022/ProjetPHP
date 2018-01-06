@@ -6,7 +6,7 @@
 
 {block name="body"}
 <div class="ui center aligned segment">
-  <h2 class="ui header">S'enregistrer</h2>
+  <h2 class="ui header">{if $user_id !== null}Modification du compte{else}S'enregistrer{/if}</h2>
 </div>
 
 <div class="ui middle aligned center aligned grid">

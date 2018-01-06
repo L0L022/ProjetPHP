@@ -6,7 +6,7 @@
 
 {block name="body"}
 <div class="ui center aligned segment">
-  <h2 class="ui header">S'enregistrer</h2>
+  <h2 class="ui header">Nouveau mot de passe</h2>
 </div>
 
 <div class="ui middle aligned center aligned grid">
@@ -25,7 +25,6 @@
             <input type="password" name="pass2" placeholder="Validation de mot de passe" value="{'pass2'|set_value}">
           </div>
         </div>
-        <!-- <div class="ui fluid large teal submit button">Register</div> -->
         <input type="submit" name="update" value="Update" class="ui fluid large teal button">
       </div>
       <div class="ui success message">
