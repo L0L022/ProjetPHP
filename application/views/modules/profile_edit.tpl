@@ -1,10 +1,14 @@
 {extends file="../layout.tpl"}
 
 {block name="css"}
-  <link rel="stylesheet" type="text/css" href="{base_url('assets/css/registration.css')}">
+<link rel="stylesheet" type="text/css" href="{base_url('assets/css/registration.css')}">
 {/block}
 
 {block name="body"}
+<div class="ui center aligned segment">
+  <h2 class="ui header">S'enregistrer</h2>
+</div>
+
 <div class="ui middle aligned center aligned grid">
   <div class="column">
     <form class="ui large form {if not empty($errors)}error{/if}" method="post" accept-charset="utf-8">
@@ -32,17 +36,6 @@
             <i class="user icon"></i>
             <input type="text" name="firstname" placeholder="Prénom" value="{'firstname'|set_value}">
           </div>
-        </div>
-        <div class="field {if not empty(form_error('avatar'))}error{/if}">
-            <label for="file1">Choose avatar:</label>
-            <div class="ui fluid file input action">
-                <input type="text" readonly value="{'avatar'|set_value}">
-                <input type="file" id="file1" name="avatar" autocomplete="off" value="{'avatar'|set_value}">
-                <div class="ui button">
-                 <i class="file icon"></i>
-                    Select...
-                </div>
-            </div>
         </div>
         <div class="field {if not empty(form_error('pass'))}error{/if}">
           <div class="ui left icon input">

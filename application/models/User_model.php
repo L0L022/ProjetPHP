@@ -41,13 +41,27 @@ class User_model extends DB_model
         $this->update(array('id' => $id, 'pass' => hash($this->pass_hash_algo, $pass)));
     }
 
-    public function login_exists($login)
+    public function login_unique($login, $id = null)
     {
-        return count($this->get(array('login' => $login))) !== 0;
+        $this->db->select($this->get_select());
+        $this->db->from($this->table);
+        $this->db->where($this->columns['login'], $login);
+        if ($id !== null) {
+            $this->db->where($this->columns['id'].' !=', $id);
+        }
+        $query = $this->db->get();
+        return count($query->result_array()) !== 0;
     }
 
-    public function mail_exists($mail)
+    public function mail_unique($mail, $id = null)
     {
-        return count($this->get(array('mail' => $mail))) !== 0;
+        $this->db->select($this->get_select());
+        $this->db->from($this->table);
+        $this->db->where($this->columns['mail'], $mail);
+        if ($id !== null) {
+            $this->db->where($this->columns['id'].' !=', $id);
+        }
+        $query = $this->db->get();
+        return count($query->result_array()) !== 0;
     }
 }
