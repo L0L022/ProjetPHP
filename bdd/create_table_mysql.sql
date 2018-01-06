@@ -129,6 +129,7 @@ insert into TJ_CAT_RCP values(2, 6);
 insert into TJ_CAT_RCP values(3, 7);
 insert into TJ_CAT_RCP values(3, 8);
 insert into TJ_CAT_RCP values(3, 9);
+
 -- création des clés étrangéres
 
 -- ALTER TABLE TJ_CAT_RCP
