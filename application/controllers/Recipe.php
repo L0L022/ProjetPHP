@@ -17,7 +17,7 @@ class Recipe extends MY_Controller
         $data = &$this->data;
         $data['id'] = $id;
         $data['recipe'] = $this->recipe_model->get(array('id' => $id))[0];
-        $data['comments'] = $this->comment_model->get();
+        $data['comments'] = $this->comment_model->get(array('recipe' => $id));
         $this->parser->parse('modules/recipe/view.tpl', $data);
     }
 

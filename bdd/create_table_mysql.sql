@@ -122,6 +122,8 @@ insert into T_CATEGORY_CAT values(3,'Desserts','Pour finir en beauté !','desser
 
 insert into T_RECIPE_RCP (RCP_ID, RCP_TITLE, RCP_DESCRIPTION, RCP_ILLUSTRATION, USR_ID, RCP_RESULT_AMOUNT) values (1, 'Salade', 'Pour commencer avec le sourire !', 'starter.jpg', 3, 0), (2, 'Fromage & salade', 'Pour commencer avec le sourire !', 'starter.jpg', 1, 0), (3, 'Cake olive', 'Pour commencer avec le sourire !', 'starter.jpg', 2, 0), (4, 'Ratatouille', 'Pour avoir le ventre bien plein !', 'main_course.jpg', 1, 0),(5, 'Frite & steak', 'Pour avoir le ventre bien plein !', 'main_course.jpg', 1, 0),(6, 'Pizza', 'Pour avoir le ventre bien plein !', 'main_course.jpg', 1, 0),(7,'Mugcake', 'Pour finir en beauté !', 'dessert.jpg', 2, 0),(8, 'Crème aux oeufs', 'Pour finir en beauté !', 'dessert.jpg', 1, 0),(9,'Chococo', 'Pour finir en beauté !', 'dessert.jpg', 3, 0);
 
+insert into T_COMMENT_COM (COM_ID, COM_TEXT, USR_ID, RCP_ID) values (1, 'C est bon', 1, 1), (2, 'NON BEURK, va travailler', 2, 1), (3, 'on se calme les gens', 3, 1), (4, 'toi chut !', 2, 1), (5, 'je suis tout seul', 1, 2);
+
 insert into TJ_CAT_RCP values(1, 1);
 insert into TJ_CAT_RCP values(1, 2);
 insert into TJ_CAT_RCP values(1, 3);
