@@ -12,14 +12,13 @@ class Profile extends MY_Controller
 
     public function view($id)
     {
-        if ($id === "me") {
-        }
         $this->load->model('recipe_model');
 
         $user = $this->user_model->get_user($id);
         $user['recettes'] = $this->recipe_model->get(array('creator' => $id));
 
         $data = &$this->data;
+        $data['id'] = $id;
         $data['user'] = $user;
         $this->parser->parse('modules/profile_view.tpl', $data);
     }
@@ -29,6 +28,7 @@ class Profile extends MY_Controller
         $new_profile = $id === 'new';
 
         $data = &$this->data;
+        $data['id'] = $id;
         $data['new_profile'] = $new_profile;
 
         if (!$new_profile and count($_POST) === 0) {
@@ -130,6 +130,7 @@ class Profile extends MY_Controller
         $avatar = $user['avatar'];
 
         $data = &$this->data;
+        $data['id'] = $id;
         $data['avatar'] = &$avatar;
 
         if ($avatar !== '' and $this->input->post('remove') !== null) {
@@ -167,6 +168,7 @@ class Profile extends MY_Controller
     public function password($id)
     {
         $data = &$this->data;
+        $data['id'] = $id;
 
         $this->load->helper('form');
         $this->load->library('form_validation');
@@ -199,6 +201,7 @@ class Profile extends MY_Controller
     public function delete($id)
     {
         $data = &$this->data;
+        $data['id'] = $id;
 
         $this->load->helper('form');
         $this->load->library('form_validation');
