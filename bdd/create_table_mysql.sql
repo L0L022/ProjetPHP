@@ -36,15 +36,17 @@ CREATE TABLE T_RECIPE_RCP (
   RCP_DATE_VALIDATION timestamp NOT NULL DEFAULT NOW(),
   RCP_TITLE varchar(80) NOT NULL,
   RCP_DESCRIPTION longtext NOT NULL,
-  RCP_TEMPS_PREPARATION time NOT NULL DEFAULT '00:00:00',
-  RCP_TEMPS_COOKING time NULL DEFAULT '00:00:00',
-  RCP_TEMPS_REST time NULL DEFAULT '00:00:00',
-  RCP_DIFFICULTY ENUM("facile","moyen","difficile") NOT NULL DEFAULT 'facile',
-  RCP_COUT ENUM("faible","moyen","eleve") NOT NULL DEFAULT 'faible',
-  RCP_STATUT ENUM("brouillon","soumise","finale") NOT NULL DEFAULT 'brouillon',
+  RCP_EXPLANATION longtext NOT NULL,
+  RCP_TIME_PREPARATION time NOT NULL DEFAULT '00:00:00',
+  RCP_TIME_COOKING time NULL DEFAULT '00:00:00',
+  RCP_TIME_REST time NULL DEFAULT '00:00:00',
+  RCP_DIFFICULTY ENUM("easy","average","hard") NOT NULL DEFAULT 'easy',
+  RCP_COST ENUM("low","average","high") NOT NULL DEFAULT 'low',
+  RCP_REVIEWED boolean NOT NULL DEFAULT FALSE,
   RCP_ILLUSTRATION varchar(80) NOT NULL,
   USR_ID bigint(20) unsigned NOT NULL,
-  RCP_NBPERSONNE int NOT NULL,
+  RCP_RESULT_TYPE ENUM("person","unit") NOT NULL DEFAULT 'person',
+  RCP_RESULT_AMOUNT int NOT NULL,
   PRIMARY KEY (RCP_ID),
   FOREIGN KEY (USR_ID) REFERENCES T_USER_USR(USR_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -87,13 +89,13 @@ CREATE TABLE T_INGREDIENT_IGD (
 -- DROP TABLE IF EXISTS TJ_IGD_RCP_UNT;
 CREATE TABLE TJ_IGD_RCP_UNT (
   RCP_ID bigint(20) unsigned NOT NULL,
-  IGD_LABEL varchar(255)  NOT NULL,
-  UNT_LABEL varchar(30) NOT NULL,
-  IGD_RCP_UNT_QUANTITE int(11) NOT NULL,
+  IGD_ID bigint(20) unsigned NOT NULL,
+  UNT_ID bigint(20) unsigned NOT NULL,
+  IGD_RCP_UNT_QUANTITY int(11) NOT NULL,
   FOREIGN KEY (RCP_ID) REFERENCES T_RECIPE_RCP(RCP_ID),
-  FOREIGN KEY (IGD_LABEL) REFERENCES T_INGREDIENT_IGD(IGD_LABEL),
-  FOREIGN KEY (UNT_LABEL) REFERENCES T_UNIT_UNT(UNT_LABEL),
-  PRIMARY KEY (RCP_ID, IGD_LABEL, UNT_LABEL)
+  FOREIGN KEY (IGD_ID) REFERENCES T_INGREDIENT_IGD(IGD_ID),
+  FOREIGN KEY (UNT_ID) REFERENCES T_UNIT_UNT(UNT_ID),
+  PRIMARY KEY (RCP_ID, IGD_ID, UNT_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 -- Table de commentaires
@@ -118,7 +120,7 @@ insert into T_CATEGORY_CAT values(1,'Entrées','Pour commencer avec le sourire !
 insert into T_CATEGORY_CAT values(2,'Plats','Pour avoir le ventre bien plein !','main_course.jpg');
 insert into T_CATEGORY_CAT values(3,'Desserts','Pour finir en beauté !','dessert.jpg');
 
-insert into T_RECIPE_RCP (RCP_ID, RCP_TITLE, RCP_DESCRIPTION, RCP_ILLUSTRATION, USR_ID, RCP_NBPERSONNE) values (1, 'Salade', 'Pour commencer avec le sourire !', 'starter.jpg', 3, 0), (2, 'Fromage & salade', 'Pour commencer avec le sourire !', 'starter.jpg', 1, 0), (3, 'Cake olive', 'Pour commencer avec le sourire !', 'starter.jpg', 2, 0), (4, 'Ratatouille', 'Pour avoir le ventre bien plein !', 'main_course.jpg', 1, 0),(5, 'Frite & steak', 'Pour avoir le ventre bien plein !', 'main_course.jpg', 1, 0),(6, 'Pizza', 'Pour avoir le ventre bien plein !', 'main_course.jpg', 1, 0),(7,'Mugcake', 'Pour finir en beauté !', 'dessert.jpg', 2, 0),(8, 'Crème aux oeufs', 'Pour finir en beauté !', 'dessert.jpg', 1, 0),(9,'Chococo', 'Pour finir en beauté !', 'dessert.jpg', 3, 0);
+insert into T_RECIPE_RCP (RCP_ID, RCP_TITLE, RCP_DESCRIPTION, RCP_ILLUSTRATION, USR_ID, RCP_RESULT_AMOUNT) values (1, 'Salade', 'Pour commencer avec le sourire !', 'starter.jpg', 3, 0), (2, 'Fromage & salade', 'Pour commencer avec le sourire !', 'starter.jpg', 1, 0), (3, 'Cake olive', 'Pour commencer avec le sourire !', 'starter.jpg', 2, 0), (4, 'Ratatouille', 'Pour avoir le ventre bien plein !', 'main_course.jpg', 1, 0),(5, 'Frite & steak', 'Pour avoir le ventre bien plein !', 'main_course.jpg', 1, 0),(6, 'Pizza', 'Pour avoir le ventre bien plein !', 'main_course.jpg', 1, 0),(7,'Mugcake', 'Pour finir en beauté !', 'dessert.jpg', 2, 0),(8, 'Crème aux oeufs', 'Pour finir en beauté !', 'dessert.jpg', 1, 0),(9,'Chococo', 'Pour finir en beauté !', 'dessert.jpg', 3, 0);
 
 insert into TJ_CAT_RCP values(1, 1);
 insert into TJ_CAT_RCP values(1, 2);
@@ -129,27 +131,3 @@ insert into TJ_CAT_RCP values(2, 6);
 insert into TJ_CAT_RCP values(3, 7);
 insert into TJ_CAT_RCP values(3, 8);
 insert into TJ_CAT_RCP values(3, 9);
-
--- création des clés étrangéres
-
--- ALTER TABLE TJ_CAT_RCP
---  ADD CONSTRAINT C_FK_CAT_CAT_RCP FOREIGN KEY (CAT_ID) REFERENCES T_CATEGORY_CAT (CAT_ID) ,
---  ADD CONSTRAINT C_FK_RCP_CAT_RCP FOREIGN KEY (RCP_ID) REFERENCES T_RECIPE_RCP (RCP_ID) ;
---
--- ALTER TABLE  T_UNIT_UNT
---  ADD CONSTRAINT C_FK_UNT_USR FOREIGN KEY (USR_ID) REFERENCES T_USER_USR (USR_ID) ;
---
--- ALTER TABLE T_COMMENT_COM
---  ADD CONSTRAINT C_FK_USR_COM FOREIGN KEY (USR_ID) REFERENCES T_USER_USR (USR_ID) ,
---  ADD CONSTRAINT C_FK_RCP_COM FOREIGN KEY (RCP_ID) REFERENCES T_RECIPE_RCP (RCP_ID) ;
---
--- ALTER TABLE TJ_IGD_RCP_UNT
---  ADD CONSTRAINT C_FK_RCP_IGD_RCP_UNT FOREIGN KEY (RCP_ID) REFERENCES T_RECIPE_RCP (RCP_ID) ,
---  ADD CONSTRAINT C_FK_IGD_IGD_RCP_UNT FOREIGN KEY (IGD_LABEL) REFERENCES T_INGREDIENT_IGD(IGD_LABEL),
---  ADD CONSTRAINT C_FK_UNT_IGD_RCP_UNT FOREIGN KEY (UNT_LABEL) REFERENCES T_UNIT_UNT (UNT_LABEL) ;
---
--- ALTER TABLE T_INGREDIENT_IGD
---  ADD CONSTRAINT C_FK_USR_IGD FOREIGN KEY (USR_ID) REFERENCES T_USER_USR (USR_ID) ;
---
--- ALTER TABLE T_RECIPE_RCP
---  ADD CONSTRAINT C_FK_USR_RCP FOREIGN KEY (USR_ID) REFERENCES T_USER_USR (USR_ID) ;
