@@ -46,6 +46,8 @@ class Recipe extends MY_Controller
 
     public function edit($id)
     {
+        $this->load->model('join_category_recipe_model', 'jcr');
+
         $new = $id === 'new';
         $model = &$this->recipe_model;
 
@@ -56,11 +58,17 @@ class Recipe extends MY_Controller
         $data = &$this->data;
         $data['id'] = $id;
         $data['new'] = $new;
+        $data['categories'] = $this->category_model->get();
 
         $columns_keys = array_keys($model->get_columns());
+        $columns_keys[] = 'categories';
 
         if (!$new and count($_POST) === 0) {
             $model_data = $model->get(array('id' => $id))[0];
+            $model_data['categories'] = array();
+            foreach ($this->jcr->get(array('recipe' => $id)) as $r) {
+                $model_data['categories'][] = $r['category'];
+            }
             foreach ($columns_keys as $v) {
                 $_POST[$v] = $model_data[$v];
             }
@@ -102,6 +110,11 @@ class Recipe extends MY_Controller
                 if ($this->input->post($v) !== null) {
                     $model_data[$v] = $this->input->post($v);
                 }
+            }
+
+            $this->jcr->delete(array('recipe' => $id));
+            foreach ($model_data['categories'] as $c) {
+                $this->jcr->insert(array('recipe' => $id, 'category' => $c));
             }
 
             if ($new) {

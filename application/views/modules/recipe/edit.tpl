@@ -50,6 +50,15 @@
             <input type="number" name="result_amount" placeholder="Nombre de gens" min="1" value="{'result_amount'|set_value}">
           </div>
         </div>
+        <div class="field {if not empty(form_error('result_amount'))}error{/if}">
+          <label>Catégorie</label>
+          <select multiple name="categories[]" class="ui search dropdown">
+            <option value="">Select category</option>
+            {foreach $categories as $c}
+            <option value="{$c.id}" {set_select('categories', $c.id)}>{$c.label}</option>
+            {/foreach}
+          </select>
+        </div>
         <!-- <div class="ui fluid large teal submit button">Register</div> -->
         <input type="submit" name="register" value="Register" class="ui fluid large teal button">
       </div>
@@ -195,4 +204,9 @@
 
 {block name="javascript"}
   <script src="{base_url('assets/js/registration.js')}" charset="utf-8"></script>
+  <script>
+  $('select.dropdown')
+  .dropdown()
+;
+</script>
 {/block}
