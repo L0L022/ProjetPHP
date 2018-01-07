@@ -7,17 +7,17 @@
 </div>
 
 <div class="ui center aligned top attached segment">
-  <h2 class="ui header">Edito</h2>
+  <h2 class="ui header">Édito</h2>
 </div>
 <div class="ui attached segment">
   Le site de cuisine
 </div>
 
 <div class="ui center aligned top attached segment">
-  <h2 class="ui header">Recettes au hasard</h2>
+  <h2 class="ui header">Recettes aux hasards</h2>
 </div>
 <div class="ui attached segment">
-  
+
 </div>
 
 {/block}

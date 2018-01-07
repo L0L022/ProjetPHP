@@ -10,19 +10,19 @@
       <img class="ui medium rounded image" src="{if $user.avatar eq ''}{base_url('media/avatars/Default.png')}{else}{base_url('media/avatars/')}{$user.avatar}{/if}">
       <h2>{$user.name} {$user.firstname}</h2>
       <h4>{$user.login}</h4>
-      <form method="get" action="{site_url('profile/edit/')}{$user_id}">
-          <button class="ui basic black fluid button" type="submit">Editer profil</button>
+      <form method="get" action="{site_url('profile/edit/')}{$id}">
+          <button class="ui basic black fluid button" type="submit">Éditer profil</button>
       </form>
       </br>
-      <form method="get" action="{site_url('profile/avatar/')}{$user_id}">
+      <form method="get" action="{site_url('profile/avatar/')}{$id}">
           <button class="ui basic black fluid button" type="submit">Modification avatar</button>
       </form>
     </br>
-      <form method="get" action="{site_url('profile/password/')}{$user_id}">
+      <form method="get" action="{site_url('profile/password/')}{$id}">
           <button class="ui basic fluid black button" type="submit">Changer mot de passe</button>
       </form>
     </br>
-      <form method="get" action="{site_url('profile/delete/')}{$user_id}">
+      <form method="get" action="{site_url('profile/delete/')}{$id}">
           <button class="ui basic fluid red button" type="submit">Supprimer mon compte</button>
       </form>
     </div>
@@ -33,10 +33,10 @@
       <div class="ui grid">
         <div class="row">
           <div class="twelve wide column">
-              <p>Nombre de recettes : </p>
+              <p>Nombre de recettes :  {$user.recettes|@count}</p>
           </div>
           <div class="four wide column">
-            <form method="get" action="{site_url('recipe/edit/1')}">
+            <form method="get" action="{site_url('recipe/edit/new')}">
                 <button class="ui inverted green button" type="submit">Nouvelle recette</button>
             </form>
           </div>
@@ -65,7 +65,7 @@
                 </form>
                 </br>
                   <form method="get" action="{site_url('recipe/edit/')}{$value.id}">
-                    <button class="fluid positive ui button">Editer recette</button>
+                    <button class="fluid positive ui button">Éditer recette</button>
                   </form>
                 </br>
                   <form method="get" action="{site_url('recipe/delete/')}{$value.id}">

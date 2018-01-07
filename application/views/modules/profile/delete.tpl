@@ -14,7 +14,7 @@
     <form class="ui large form {if not empty($errors)}error{/if}" method="post" accept-charset="utf-8">
       <div class="ui stacked segment">
         Êtes-vous sûr de supprimer votre compte ? </br>
-        Cela supprimera toutes vos recettes mais laissera vos commentaire sur le site.
+        Cela supprimera toutes vos recettes mais laissera vos commentaires sur le site.
         </br>
         </br>
        <div class="ui checkbox">
@@ -34,7 +34,7 @@
        </ul>
       </div>
     </form>
-      <form method="get" action="{site_url('profile/view/')}{$user_id}">
+      <form method="get" action="{site_url('profile/view/')}{$id}">
         <input type="submit" name="return" value="Annuler" class="ui fluid large green button">
       </form>
       </div>
