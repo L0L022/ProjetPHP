@@ -80,17 +80,23 @@
   <h2 class="ui header">Espace commentaire</h2>
 </div>
 <div class = "ui attached segment">
-  <form>
-  <div class="ui form">
-  <div class="field">
-    <label>Ajouter votre commentaire</label>
-    {* value="{'explanation'|set_value}"  *}
-  <textarea rows="5" cols="50" placeholder="Describe yourself here..." name="comment">
-  </textarea>
-  </div>
-</div>
-  <button class="positive ui button" name="comment">Ajouter</button>
-</form>
+ <form class="ui large form {if not empty($errors)}error{/if}" method="post" accept-charset="utf-8">
+   <div class="ui stacked segment">
+     <div class="field {if not empty(form_error('comment'))}error{/if}">
+       <label for="title">Comment</label>
+       <textarea rows="5" cols="50" name="comment" placeholder="Comment">{'comment'|set_value}</textarea>
+     </div>
+     <!-- <div class="ui fluid large teal submit button">Register</div> -->
+     <input type="submit" name="new_comment" value="Ajouter" class="ui fluid large teal button">
+   </div>
+   <div class="ui error message">
+    <ul class="list">
+     {foreach $errors as $error}
+     <li>{$error}</li>
+     {/foreach}
+    </ul>
+   </div>
+ </form>
 </br>
   <div class="ui internally celled grid">
   <div class="row">
