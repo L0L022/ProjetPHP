@@ -60,11 +60,15 @@
               </div>
               </div>
               <div class="three wide column">
-                  <form method="get" action="{site_url('recipe/edit/1')}">
-                    <button class="fluid positive ui button">Modifier</button>
+                <form method="get" action="{site_url('recipe/illustration/')}{$value.id}">
+                  <button class="fluid blue ui button">Modifier l'image</button>
+                </form>
+                </br>
+                  <form method="get" action="{site_url('recipe/edit/')}{$value.id}">
+                    <button class="fluid positive ui button">Editer recette</button>
                   </form>
                 </br>
-                  <form method="get" action="{site_url('recipe/edition')}">
+                  <form method="get" action="{site_url('recipe/delete/')}{$value.id}">
                     <button class="fluid negative ui button">Supprimer</button>
                   </form>
               </div>

@@ -16,7 +16,7 @@
 </div>
 <div class="ui horizontal segments">
   <div class="ui center aligned segment">
-    <p>Créer par {$recipe.user_login}</p>
+    <p>Créer par <a href="{site_url('profile/view/')}{$recipe.user_id}">{$recipe.user_login}</a></p>
   </div>
   <div class="ui center aligned segment">
     <p>Créer le {$recipe.date_create|date_format:"%D"}</p>
@@ -33,8 +33,7 @@
         <img class="ui fluid rounded image" src="{if $recipe.illustration eq ''}{base_url('media/avatars/Default.png')}{else}{base_url('media/illustrations/')}{$recipe.illustration}{/if}">
       </div>
       <div class="twelve wide column">
-        <p>Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at. Usu ocurreret referrentur at, cu epicurei appellantur vix. Cum ea laoreet recteque electram, eos choro alterum definiebas
-          in. Vim dolorum definiebas an. Mei ex natum rebum iisque.</p>
+        {$recipe.description}
       </div>
     </div>
   </div>
@@ -66,12 +65,7 @@
   </div>
   <div class="thirteen wide column">
     <div class="ui yellow segment">
-      {for $foo=1 to 5}
-
-      <h3>Etape {$foo}</h3>
-      <p>Truc muche bidule</p>
-
-      {/for}
+      {$recipe.explanation}
     </div>
   </div>
 </div>
@@ -109,7 +103,7 @@
         <img class="ui small rounded image" src="{if $c.user_avatar eq ''}{base_url('media/avatars/Default.png')}{else}{base_url('media/avatars/')}{$c.user_avatar}{/if}">
     </a>
     <div class="content">
-      <a class="author">{$c.user_login}</a>
+      <a class="author" href="{site_url('profile/view/')}{$c.user_id}">{$c.user_login}</a>
       <div class="metadata">
         <div class="date">Le {$c.date|date_format}</div>
       </div>

@@ -25,6 +25,24 @@
           <label for="title">Explication</label>
           <textarea rows="5" cols="50" name="explanation" placeholder="Explication">{'explanation'|set_value}</textarea>
         </div>
+        <div class="field {if not empty(form_error('time_preparation'))}error{/if}">
+          <label for="time_preparation">Temps de preparation</label>
+          <div class="ui small input focus">
+            <input placeholder="temps" type="time" name="time_preparation" value="{'time_preparation'|set_value}">
+          </div>
+        </div>
+        <div class="field {if not empty(form_error('time_cooking'))}error{/if}">
+          <label for="time_cooking">Temps de cuisson</label>
+          <div class="ui small input focus">
+            <input placeholder="temps" type="time" name="time_cooking" value="{'time_cooking'|set_value}">
+          </div>
+        </div>
+        <div class="field {if not empty(form_error('time_rest'))}error{/if}">
+          <label for="time_rest">Temps de repos</label>
+          <div class="ui small input focus">
+            <input placeholder="temps" type="time" name="time_rest" value="{'time_rest'|set_value}">
+          </div>
+        </div>
         <div class="field {if not empty(form_error('result_amount'))}error{/if}">
           <label for="title">Nombre de personnes</label>
           <div class="ui left icon input">
