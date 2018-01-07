@@ -23,7 +23,7 @@
 
 <div class="ui middle aligned center aligned grid">
   <div class="column">
-    <form class="ui large form {if not empty($errors)}error{/if}" method="post" accept-charset="utf-8">
+      <form class="ui large form {if not empty($success)}success{/if}{if not empty($errors)}error{/if}" method="post" accept-charset="utf-8">
       <div class="ui stacked segment">
        <div class="field {if not empty(form_error('login'))}error{/if}">
          <div class="ui left icon input">
@@ -65,6 +65,9 @@
         {/if}
         <!-- <div class="ui fluid large teal submit button">Register</div> -->
         <input type="submit" name="register" value="{if $new ne true}Modifier{else}S'enregistrer{/if}" class="ui fluid large teal button">
+      </div>
+      <div class="ui success message">
+        <p>Votre profil à bien été modifier.</p>
       </div>
       <div class="ui error message">
        <ul class="list">

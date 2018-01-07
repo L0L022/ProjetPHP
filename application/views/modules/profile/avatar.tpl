@@ -29,7 +29,7 @@
 <div class="ui middle aligned center aligned grid">
   <div class="column">
     <img class="ui centered medium rounded image" src="{base_url('media/avatars/')}{$avatar}" alt="">
-    <form class="ui large form {if not empty($errors)}error{/if}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+    <form class="ui large form {if not empty($success)}success{/if}{if not empty($errors)}error{/if}" method="post" accept-charset="utf-8"  enctype="multipart/form-data">
       <div class="ui stacked segment">
         <div class="field">
             <div class="ui fluid file input action">
@@ -41,9 +41,12 @@
                 </div>
             </div>
         </div>
-        <input type="submit" name="upload" value="Télécharger l'image" class="ui fluid large teal button">
+        <input type="submit" name="upload" value="Envoyer l'image" class="ui fluid large teal button">
         <br>
         {if $avatar ne ""}<input type="submit" name="remove" value="Supprimer" class="ui fluid large teal button">{/if}
+      </div>
+      <div class="ui success message">
+        <p>Votre avatar à bien été modifier.</p>
       </div>
       <div class="ui error message">
        <ul class="list">

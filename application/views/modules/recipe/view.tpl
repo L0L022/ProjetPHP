@@ -56,9 +56,9 @@
 <div class="ui grid">
   <div class="three wide column">
     <div class="ui red segment">
-      {for $foo=1 to 8}
-      <p> <i class="hourglass half icon"></i> 6 bananes </p>
-      {/for}
+      {foreach $ingredients as $i}
+       <p> <i class="hourglass half icon"></i> {$i.label} {$i.quantity} {$i.unit_short_label}</p>
+      {/foreach}
     </div>
   </div>
   <div class="thirteen wide column">

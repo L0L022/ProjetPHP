@@ -52,7 +52,7 @@
         <input type="submit" name="update" value="Modifier" class="ui fluid large teal button">
       </div>
       <div class="ui success message">
-        <p>{$success}</p>
+        <p>Votre mot de passe à bien été modifier.</p>
       </div>
       <div class="ui error message">
        <ul class="list">
