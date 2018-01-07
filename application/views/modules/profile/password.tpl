@@ -13,16 +13,24 @@
   <div class="column">
     <form class="ui large form {if not empty($success)}success{/if}{if not empty($errors)}error{/if}" method="post" accept-charset="utf-8">
       <div class="ui stacked segment">
+       {if $old_pass}
+        <div class="field {if not empty(form_error('old_pass'))}error{/if}">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="old_pass" placeholder="Ancien mot de passe" value="{'old_pass'|set_value}">
+          </div>
+        </div>
+        {/if}
         <div class="field {if not empty(form_error('pass'))}error{/if}">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="pass" placeholder="Mot de passe" value="{'pass'|set_value}">
+            <input type="password" name="pass" placeholder="Nouveau mot de passe" value="{'pass'|set_value}">
           </div>
         </div>
         <div class="field {if not empty(form_error('pass2'))}error{/if}">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="pass2" placeholder="Validation de mot de passe" value="{'pass2'|set_value}">
+            <input type="password" name="pass2" placeholder="Validation du nouveau mot de passe" value="{'pass2'|set_value}">
           </div>
         </div>
         <input type="submit" name="update" value="Update" class="ui fluid large teal button">

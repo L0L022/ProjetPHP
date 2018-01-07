@@ -36,6 +36,12 @@ class User_model extends DB_model
         $this->insert($data);
     }
 
+    public function check_pass($id, $pass)
+    {
+        $user = $this->get_user($id);
+        return $user['pass'] === hash($this->pass_hash_algo, $pass);
+    }
+
     public function update_pass($id, $pass)
     {
         $this->update(array('id' => $id, 'pass' => hash($this->pass_hash_algo, $pass)));
