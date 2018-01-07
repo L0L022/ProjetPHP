@@ -161,8 +161,6 @@ class Recipe extends MY_Controller
         $illustration = $model->get(array('id' => $id))[0]['illustration'];
 
         $data = &$this->data;
-        $data['id'] = $id;
-        $data['illustration'] = &$illustration;
 
         if ($illustration !== '' and $this->input->post('remove') !== null) {
             if (file_exists($upload_path.$illustration)) {
@@ -193,6 +191,7 @@ class Recipe extends MY_Controller
             }
         }
 
+        $data['recipe'] = $this->recipe_model->get_recipe($id);
         $this->parser->parse('modules/recipe/illustration.tpl', $data);
     }
 
@@ -201,7 +200,7 @@ class Recipe extends MY_Controller
         $model = &$this->recipe_model;
 
         $data = &$this->data;
-        $data['id'] = $id;
+        $data['recipe'] = $this->recipe_model->get_recipe($id);
 
         $this->load->helper('form');
         $this->load->library('form_validation');
