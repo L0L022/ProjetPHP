@@ -17,6 +17,7 @@ class Recipe extends MY_Controller
         $data = &$this->data;
         $data['id'] = $id;
         $data['recipe'] = $this->recipe_model->get_recipe($id);
+        $data['categories'] = $this->recipe_model->get_categories($id);
         $data['comments'] = $this->recipe_model->get_comments($id);
         $this->parser->parse('modules/recipe/view.tpl', $data);
     }
@@ -95,11 +96,75 @@ class Recipe extends MY_Controller
         $this->parser->parse('modules/recipe/edit.tpl', $data);
     }
 
-    public function delete($id)
+    public function illustration($id)
     {
+        $model = &$this->recipe_model;
+        $upload_path = './media/illustrations/';
+        $illustration = $model->get(array('id' => $id))[0]['illustration'];
+
         $data = &$this->data;
         $data['id'] = $id;
-        $data['recipe'] = $this->recipe_model->get(array('id' => $id))[0];
+        $data['illustration'] = &$illustration;
+
+        if ($illustration !== '' and $this->input->post('remove') !== null) {
+            if (file_exists($upload_path.$illustration)) {
+                unlink($upload_path.$illustration);
+            }
+            $illustration = '';
+            $model->update(array('id' => $id, 'illustration' => ''));
+        }
+
+        if ($this->input->post('upload') !== null) {
+            $config['upload_path']          = $upload_path;
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['overwrite']            = true;
+            $config['max_size']             = 1000;
+            $config['encrypt_name']         = true;
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('illustration')) {
+                if ($illustration !== '' and file_exists($upload_path.$illustration)) {
+                    unlink($upload_path.$illustration);
+                }
+                $illustration = $this->upload->data()['file_name'];
+                $model->update(array('id' => $id, 'illustration' => $illustration));
+                $data['success'] = true;
+            } else {
+                $data['errors'] = array($this->upload->display_errors('', ''));
+            }
+        }
+
+        $this->parser->parse('modules/recipe/illustration.tpl', $data);
+    }
+
+    public function delete($id)
+    {
+        $model = &$this->recipe_model;
+
+        $data = &$this->data;
+        $data['id'] = $id;
+
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $this->_load_lang('form_validation');
+
+        $rules = array(
+            array(
+                'field' => 'confirmation',
+                'label' => 'Confirmation',
+                'rules' => 'required'
+            )
+        );
+        $this->form_validation->set_rules($rules);
+
+        if ($this->form_validation->run()) {
+            $model->delete(array('id' => $id));
+            $data['success'] = true;
+        } else {
+            $data['errors'] = $this->form_validation->error_array();
+        }
+
         $this->parser->parse('modules/recipe/delete.tpl', $data);
     }
 

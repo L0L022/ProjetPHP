@@ -45,6 +45,19 @@ class Recipe_model extends DB_model
         return $query->result_array();
     }
 
+    public function get_categories($id)
+    {
+        $this->load->model('category_model');
+        $this->load->model('join_category_recipe_model', 'jcr');
+
+        $this->db->select($this->category_model->get_select());
+        $this->db->from($this->category_model->table);
+        $this->db->join($this->jcr->get_table(), $this->jcr->get_table().'.'.$this->jcr->get_columns()['category'].'='.$this->category_model->table.'.'.$this->category_model->columns['id']);
+        $this->db->where($this->jcr->to_real_name(array('recipe' => $id)));
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function in_category($category)
     {
         $this->load->model('join_category_recipe_model', 'jcr');
