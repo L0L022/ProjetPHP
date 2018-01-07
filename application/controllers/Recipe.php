@@ -55,11 +55,6 @@ class Recipe extends MY_Controller
         $new = $id === 'new';
         $model = &$this->recipe_model;
 
-        if ($new) {
-            $model_data['creator'] = $this->user_id;
-            $_POST['creator'] = $this->user_id;
-        }
-
         $data = &$this->data;
         $data['id'] = $id;
         $data['new'] = $new;
@@ -75,7 +70,7 @@ class Recipe extends MY_Controller
         $model_data['ingredients'] = array();
 
         if (!$new and count($_POST) === 0) {
-            $model_data = $model->get(array('id' => $id))[0];
+            $model_data = array_merge($model_data, $model->get(array('id' => $id))[0]);
 
             foreach ($this->jcr->get(array('recipe' => $id)) as $r) {
                 $model_data['categories'][] = $r['category'];
@@ -120,6 +115,12 @@ class Recipe extends MY_Controller
 
         $this->form_validation->set_rules($rules);
 
+        if ($new) {
+            $model_data['creator'] = $this->user_id;
+        } else {
+            $model_data['creator'] = $model->get(array('id' => $id))[0]['creator'];
+        }
+
         if ($this->form_validation->run()) {
             foreach ($columns_keys as $v) {
                 if ($this->input->post($v) !== null) {
@@ -152,6 +153,7 @@ class Recipe extends MY_Controller
             $data['errors'] = $this->form_validation->error_array();
         }
 
+        $data['creator'] = $model_data['creator'];
         $this->parser->parse('modules/recipe/edit.tpl', $data);
     }
 
