@@ -28,7 +28,7 @@
 
 <div class="ui middle aligned center aligned grid">
   <div class="column">
-    <form class="ui large form {if not empty($errors)}error{/if}" method="post" accept-charset="utf-8">
+    <form class="ui large form {if not empty($success)}success{/if}{if not empty($errors)}error{/if}" method="post" accept-charset="utf-8">
       <div class="ui stacked segment">
         Êtes-vous sûr de supprimer votre recette ? </br>
         </br>
@@ -41,7 +41,10 @@
        </br>
         <input type="submit" name="delete" value="Supprimer" class="ui fluid large red button">
       </br>
-
+      </div>
+      <div class="ui success message">
+        <p>Votre recette à été supprimé.</p>
+      </div>
       <div class="ui error message">
        <ul class="list">
         {foreach $errors as $error}
@@ -49,8 +52,7 @@
         {/foreach}
        </ul>
       </div>
-    </form>
-      </div>
+      </form>
   </div>
 </div>
 {/block}

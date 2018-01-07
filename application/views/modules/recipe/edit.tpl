@@ -10,7 +10,7 @@
   <div class="ui grid">
     <div class="row">
       <div class="four wide column">
-        <form method="get" action="{site_url('profile/view/')}{$recipe.creator}">
+        <form method="get" action="{site_url('profile/view/')}{'creator'|set_value}">
           <button class="ui small basic labeled icon button">
             <i class="left chevron icon"></i>
             Retour vers profil
@@ -28,7 +28,7 @@
 
 <div class="ui middle aligned center aligned grid">
   <div class="column">
-    <form class="ui large form {if not empty($errors)}error{/if}" method="post" accept-charset="utf-8">
+      <form class="ui large form {if not empty($success)}success{/if}{if not empty($errors)}error{/if}" method="post" accept-charset="utf-8">
       <div class="ui stacked segment">
        <div class="field {if not empty(form_error('title'))}error{/if}">
           <label for="title">Titre recette</label>
@@ -47,7 +47,7 @@
           <label for="title">Description</label>
           <textarea rows="1" cols="50" name="description" placeholder="Description">{'description'|set_value}</textarea>
         </div>
-        <div class="field {if not empty(form_error('description'))}error{/if}">
+        {* <div class="field {if not empty(form_error('ingredients'))}error{/if}">
           <label for="title">Ingredients</label>
           <div class="ui grid">
             <div class="row">
@@ -64,7 +64,7 @@
         </div>
         </div>
       </div>
-    </div>
+    </div> *}
         <div class="field {if not empty(form_error('explanation'))}error{/if}">
           <label for="title">Explication</label>
           <textarea required rows="5" cols="50" name="explanation" placeholder="Explication">{'explanation'|set_value}</textarea>
@@ -118,6 +118,9 @@
         </div>
         <!-- <div class="ui fluid large teal submit button">Register</div> -->
         <input type="submit" name="register" value="{if $new === true}Ajouter{else}Modifier{/if}" class="ui fluid large teal button">
+      </div>
+      <div class="ui success message">
+        {if $new === true} <p>Votre recette à bien été créer.</p>{else}<p>Votre recette à bien été modifier.</p>{/if}
       </div>
       <div class="ui error message">
        <ul class="list">

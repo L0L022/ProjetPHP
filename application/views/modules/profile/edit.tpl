@@ -67,7 +67,7 @@
         <input type="submit" name="register" value="{if $new ne true}Modifier{else}S'enregistrer{/if}" class="ui fluid large teal button">
       </div>
       <div class="ui success message">
-        <p>Votre profil à bien été modifier.</p>
+        {if $new ne true}<p>Votre profil à bien été modifier.</p>{else}<p>Vous vous êtes enregistrer.</p>{/if}</h2>
       </div>
       <div class="ui error message">
        <ul class="list">
