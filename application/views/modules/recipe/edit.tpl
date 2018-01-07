@@ -19,13 +19,11 @@
        </div>
         <div class="field {if not empty(form_error('description'))}error{/if}">
           <label for="title">Description</label>
-          <textarea rows="1" cols="50" name="description" value="{'description'|set_value}">
-          </textarea>
+          <textarea rows="1" cols="50" name="description" placeholder="Description">{'description'|set_value}</textarea>
         </div>
         <div class="field {if not empty(form_error('explanation'))}error{/if}">
           <label for="title">Explication</label>
-          <textarea rows="5" cols="50" name="explanation" value="{'explanation'|set_value}">
-          </textarea>
+          <textarea rows="5" cols="50" name="explanation" placeholder="Explication">{'explanation'|set_value}</textarea>
         </div>
         <div class="field {if not empty(form_error('result_amount'))}error{/if}">
           <label for="title">Nombre de personnes</label>
