@@ -65,12 +65,12 @@ class Profile extends MY_Controller
          );
 
         if ($new) {
-            $rules += array(
+            $rules[] = array(
                 'field' => 'pass',
                 'label' => 'Password',
                 'rules' => 'required'
             );
-            $rules += array(
+            $rules[] = array(
                 'field' => 'pass2',
                 'label' => 'Password confirmation',
                 'rules' => 'required|matches[pass]'
@@ -166,8 +166,10 @@ class Profile extends MY_Controller
 
     public function password($id)
     {
+        $old_pass = true;
         $data = &$this->data;
         $data['id'] = $id;
+        $data['old_pass'] = $old_pass;
 
         $this->load->helper('form');
         $this->load->library('form_validation');
@@ -184,6 +186,15 @@ class Profile extends MY_Controller
                 'rules' => 'required|matches[pass]'
             )
         );
+
+        if ($old_pass) {
+            $rules[] = array(
+                'field' => 'old_pass',
+                'label' => 'Old password',
+                'rules' => "required|callback_old_pass_check[$id]"
+            );
+        }
+
         $this->form_validation->set_rules($rules);
 
         if ($this->form_validation->run()) {
@@ -194,6 +205,16 @@ class Profile extends MY_Controller
         }
 
         $this->parser->parse('modules/profile/password.tpl', $data);
+    }
+
+    public function old_pass_check($str, $id)
+    {
+        if ($this->user_model->check_pass($id, $str)) {
+            return true;
+        } else {
+            $this->form_validation->set_message('old_pass_check', 'The {field} field is not match.');
+            return false;
+        }
     }
 
     public function delete($id)
