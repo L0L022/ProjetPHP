@@ -16,10 +16,10 @@ class Recipe extends MY_Controller
     {
         $data = &$this->data;
 
-        if ($this->user_id !== null) {
-            $this->load->helper('form');
-            $this->load->library('form_validation');
+        $this->load->helper('form');
 
+        if ($this->user_id !== null) {
+            $this->load->library('form_validation');
             $rules = array(
                 array(
                     'field' => 'comment',
