@@ -5,8 +5,25 @@
 {/block}
 
 {block name="body"}
+
 <div class="ui center aligned segment">
-  <h2 class="ui header">Modification avatar</h2>
+  <div class="ui grid">
+    <div class="row">
+      <div class="four wide column">
+        <form method="get" action="{site_url('profile/view/')}{$id}">
+          <button class="ui small basic labeled icon button">
+            <i class="left chevron icon"></i>
+            Retour vers profil
+          </button>
+        </form>
+      </div>
+      <div class="eight wide column">
+        <h2 class="ui header">Modification avatar</h2>
+      </div>
+      <div class="four wide column">
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="ui middle aligned center aligned grid">
@@ -24,9 +41,9 @@
                 </div>
             </div>
         </div>
-        <input type="submit" name="upload" value="Upload avatar" class="ui fluid large teal button">
+        <input type="submit" name="upload" value="Télécharger l'image" class="ui fluid large teal button">
         <br>
-        {if $avatar ne ""}<input type="submit" name="remove" value="Remove avatar" class="ui fluid large teal button">{/if}
+        {if $avatar ne ""}<input type="submit" name="remove" value="Supprimer" class="ui fluid large teal button">{/if}
       </div>
       <div class="ui error message">
        <ul class="list">

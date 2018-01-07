@@ -8,7 +8,7 @@
         <form method="get" action="{site_url('recipe/categories')}">
           <button class="ui small basic labeled icon button">
             <i class="left chevron icon"></i>
-            Retour vers categorie
+            Retour vers catégories
           </button>
         </form>
       </div>

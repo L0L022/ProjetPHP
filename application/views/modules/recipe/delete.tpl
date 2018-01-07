@@ -9,7 +9,7 @@
   <div class="ui grid">
     <div class="row">
       <div class="four wide column">
-        <form method="get" action="{site_url('profile/view/')}{$user_id}">
+        <form method="get" action="{site_url('profile/view/')}{$id}">
           <button class="ui small basic labeled icon button">
             <i class="left chevron icon"></i>
             Retour vers Profil

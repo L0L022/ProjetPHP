@@ -6,7 +6,23 @@
 
 {block name="body"}
 <div class="ui center aligned segment">
-  <h2 class="ui header">Modification illustration</h2>
+  <div class="ui grid">
+    <div class="row">
+      <div class="four wide column">
+        <form method="get" action="{site_url('profile/view/')}{$id}">
+          <button class="ui small basic labeled icon button">
+            <i class="left chevron icon"></i>
+            Retour vers profil
+          </button>
+        </form>
+      </div>
+      <div class="eight wide column">
+        <h2 class="ui header">Modification illustration</h2>
+      </div>
+      <div class="four wide column">
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="ui middle aligned center aligned grid">

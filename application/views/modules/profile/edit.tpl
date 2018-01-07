@@ -2,7 +2,23 @@
 
 {block name="body"}
 <div class="ui center aligned segment">
-  <h2 class="ui header">{if $new ne true}Modification du compte{else}S'enregistrer{/if}</h2>
+  <div class="ui grid">
+    <div class="row">
+      <div class="four wide column">
+        {if $new ne true}<form method="get" action="{site_url('profile/view/')}{$id}">
+          <button class="ui small basic labeled icon button">
+            <i class="left chevron icon"></i>
+            Retour vers profil
+          </button>
+        </form>{/if}
+      </div>
+      <div class="eight wide column">
+        <h2 class="ui header">{if $new ne true}Modification du compte{else}S'enregistrer{/if}</h2>
+      </div>
+      <div class="four wide column">
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="ui middle aligned center aligned grid">

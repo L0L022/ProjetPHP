@@ -34,24 +34,22 @@
       </div>
       <div class="twelve wide column">
         {$recipe.description}
+        <div class="ui horizontal segments">
+          <div class="ui black segment">
+            <p>{if $recipe.result_type eq "person"}<i class="disabled users icon"></i> Recette pour {$recipe.result_amount} personnes {else}<i class="disabled cubes icon"></i> Recette pour {$recipe.result_amount} unitées{/if}</p>
+          </div>
+          <div class="ui black segment">
+            <p><i class="hourglass half icon"></i> {$recipe.time_preparation|date_format:'%H'}h{$recipe.time_preparation|date_format:'%M'} de preparation</p>
+          </div>
+          <div class="ui black segment">
+            <p><i class="hourglass half icon"></i> {$recipe.time_cooking|date_format:'%H'}h{$recipe.time_cooking|date_format:'%M'} pour cuire</p>
+          </div>
+          <div class="ui black segment">
+            <p><i class="wait half icon"></i> {$recipe.time_rest|date_format:'%H'}h{$recipe.time_rest|date_format:'%M'} de repos</p>
+</div>
+</div>
       </div>
     </div>
-  </div>
-</div>
-
-
-<div class="ui horizontal segments">
-  <div class="ui black segment">
-    <p><i class="disabled users icon"></i> Recette pour {$recipe.result_amount} {$recipe.result_label}</p>
-  </div>
-  <div class="ui black segment">
-    <p><i class="hourglass half icon"></i> {$recipe.time_preparation} sec de preparation</p>
-  </div>
-  <div class="ui black segment">
-    <p><i class="hourglass half icon"></i> {$recipe.time_cooking} sec pour cuire</p>
-  </div>
-  <div class="ui black segment">
-    <p><i class="wait half icon"></i> {$recipe.time_rest} sec de repos</p>
   </div>
 </div>
 
@@ -74,13 +72,13 @@
   <h2 class="ui header">Espace commentaire</h2>
 </div>
 <div class = "ui attached segment">
+  {if $user_id !== null}
  <form class="ui large form {if not empty($errors)}error{/if}" method="post" accept-charset="utf-8">
    <div class="ui stacked segment">
      <div class="field {if not empty(form_error('comment'))}error{/if}">
-       <label for="title">Comment</label>
-       <textarea rows="5" cols="50" name="comment" placeholder="Comment">{'comment'|set_value}</textarea>
+       <label for="title">Commentaire</label>
+       <textarea rows="5" cols="50" name="comment" placeholder="Commentaire">{'comment'|set_value}</textarea>
      </div>
-     <!-- <div class="ui fluid large teal submit button">Register</div> -->
      <input type="submit" name="new_comment" value="Ajouter" class="ui fluid large teal button">
    </div>
    <div class="ui error message">
@@ -92,11 +90,8 @@
    </div>
  </form>
 </br>
-  <div class="ui internally celled grid">
-  <div class="row">
-  </div>
+{/if}
     {foreach $comments as $c}
-    <div class="row">
       <div class="ui comments">
   <div class="comment">
     <a class="avatar">
@@ -113,9 +108,6 @@
     </div>
   </div>
 </div>
-
-    </div>
     {/foreach}
   </div>
-</div>
 {/block}
