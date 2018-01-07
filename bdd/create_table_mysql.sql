@@ -43,7 +43,7 @@ CREATE TABLE T_RECIPE_RCP (
   RCP_DIFFICULTY ENUM("easy","average","hard") NOT NULL DEFAULT 'easy',
   RCP_COST ENUM("low","average","high") NOT NULL DEFAULT 'low',
   RCP_REVIEWED boolean NOT NULL DEFAULT FALSE,
-  RCP_ILLUSTRATION varchar(80) NOT NULL,
+  RCP_ILLUSTRATION varchar(80) NOT NULL DEFAULT '',
   USR_ID bigint(20) unsigned NOT NULL,
   RCP_RESULT_TYPE ENUM("person","unit") NOT NULL DEFAULT 'person',
   RCP_RESULT_AMOUNT int NOT NULL,

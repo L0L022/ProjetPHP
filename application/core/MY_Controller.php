@@ -5,6 +5,7 @@
 class MY_Controller extends CI_Controller
 {
     protected $data = array();
+    protected $user_id;
 
     public function __construct($page)
     {
@@ -18,6 +19,8 @@ class MY_Controller extends CI_Controller
                 $_SESSION['language'] = $req_lang;
             }
         }
+
+        $this->user_id = &$_SESSION['user_id'];
 
         $data = &$this->data;
         $data['page'] = $page;
