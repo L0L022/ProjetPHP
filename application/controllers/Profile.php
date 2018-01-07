@@ -20,7 +20,7 @@ class Profile extends MY_Controller
         $data = &$this->data;
         $data['id'] = $id;
         $data['user'] = $user;
-        $this->parser->parse('modules/profile_view.tpl', $data);
+        $this->parser->parse('modules/profile/view.tpl', $data);
     }
 
     public function edit($id)
@@ -101,7 +101,7 @@ class Profile extends MY_Controller
             $data['errors'] = $this->form_validation->error_array();
         }
 
-        $this->parser->parse('modules/profile_edit.tpl', $data);
+        $this->parser->parse('modules/profile/edit.tpl', $data);
     }
 
     public function login_check($str, $id)
@@ -162,7 +162,7 @@ class Profile extends MY_Controller
             }
         }
 
-        $this->parser->parse('modules/profile_avatar.tpl', $data);
+        $this->parser->parse('modules/profile/avatar.tpl', $data);
     }
 
     public function password($id)
@@ -195,7 +195,7 @@ class Profile extends MY_Controller
             $data['errors'] = $this->form_validation->error_array();
         }
 
-        $this->parser->parse('modules/profile_password.tpl', $data);
+        $this->parser->parse('modules/profile/password.tpl', $data);
     }
 
     public function delete($id)
@@ -223,6 +223,6 @@ class Profile extends MY_Controller
             $data['errors'] = $this->form_validation->error_array();
         }
 
-        $this->parser->parse('modules/profile_delete.tpl', $data);
+        $this->parser->parse('modules/profile/delete.tpl', $data);
     }
 }

@@ -1,4 +1,4 @@
-{extends file="../layout.tpl"}
+{extends file="../../layout.tpl"}
 
 {block name="css"}
 <link rel="stylesheet" type="text/css" href="{base_url('assets/css/registration.css')}">

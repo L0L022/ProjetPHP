@@ -1,4 +1,4 @@
-{extends file="../layout.tpl"}
+{extends file="../../layout.tpl"}
 
 {block name="body"}
 <div class="ui center aligned segment">
