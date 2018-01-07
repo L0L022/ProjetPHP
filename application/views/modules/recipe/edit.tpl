@@ -34,7 +34,7 @@
           <label for="title">Titre recette</label>
            <input required type="text" name="title" placeholder="Titre" value="{'title'|set_value}" autofocus>
        </div>
-       <div class="field {if not empty(form_error('result_amount'))}error{/if}">
+       <div class="field {if not empty(form_error('categories'))}error{/if}">
          <label>Catégorie</label>
          <select multiple name="categories[]" class="ui search dropdown">
            <option value="">Selectionnez la ou les catégories</option>

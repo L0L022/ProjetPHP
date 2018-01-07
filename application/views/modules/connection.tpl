@@ -9,10 +9,10 @@
   <div class="column">
     <form class="ui large form {if not empty($errors)}error{/if}" method="post" accept-charset="utf-8">
       <div class="ui stacked segment">
-        <div class="field {if not empty(form_error('email'))}error{/if}">
+        <div class="field {if not empty(form_error('login'))}error{/if}">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <input type="text" name="email" placeholder="Adresse email" value="{'email'|set_value}">
+            <input type="text" name="login" placeholder="Identifiant ou adresse mail" value="{'login'|set_value}">
           </div>
         </div>
         <div class="field {if not empty(form_error('password'))}error{/if}">

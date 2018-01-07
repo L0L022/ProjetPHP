@@ -35,7 +35,7 @@
         </br>
        <div class="ui checkbox">
          <input name="confirmation" type="checkbox">
-         <label>Oui, je veux.</label>
+         <label>Oui, je confirme.</label>
        </div>
        </br>
        </br>

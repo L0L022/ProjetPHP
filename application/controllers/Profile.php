@@ -43,22 +43,22 @@ class Profile extends MY_Controller
         $rules = array(
              array(
                  'field' => 'login',
-                 'label' => 'Login',
+                 'label' => 'identifiant',
                  'rules' => "required|callback_login_check[$id]"
              ),
              array(
                  'field' => 'mail',
-                 'label' => 'Adresse email',
+                 'label' => 'adresse email',
                  'rules' => "required|valid_email|callback_mail_check[$id]"
              ),
              array(
                  'field' => 'name',
-                 'label' => 'Nom',
+                 'label' => 'nom',
                  'rules' => 'required'
              ),
              array(
                  'field' => 'firstname',
-                 'label' => 'Prenom',
+                 'label' => 'prénom',
                  'rules' => 'required'
              )
          );
@@ -66,12 +66,12 @@ class Profile extends MY_Controller
         if ($new) {
             $rules[] = array(
                 'field' => 'pass',
-                'label' => 'Mot de passe',
+                'label' => 'mot de passe',
                 'rules' => 'required'
             );
             $rules[] = array(
                 'field' => 'pass2',
-                'label' => 'Mot de passe de confirmation',
+                'label' => 'validation du mot de passe',
                 'rules' => 'required|matches[pass]'
             );
         }
@@ -108,7 +108,7 @@ class Profile extends MY_Controller
     public function login_check($str, $id)
     {
         if ($this->user_model->login_unique($str, $id)) {
-            $this->form_validation->set_message('login_check', 'The {field} field is not unique.');
+            $this->form_validation->set_message('login_check', lang('form_validation_is_unique'));
             return false;
         } else {
             return true;
@@ -118,7 +118,7 @@ class Profile extends MY_Controller
     public function mail_check($str, $id)
     {
         if ($this->user_model->mail_unique($str, $id)) {
-            $this->form_validation->set_message('mail_check', 'The {field} field is not unique.');
+            $this->form_validation->set_message('mail_check', lang('form_validation_is_unique'));
             return false;
         } else {
             return true;
@@ -179,12 +179,12 @@ class Profile extends MY_Controller
         $rules = array(
             array(
                 'field' => 'pass',
-                'label' => 'Mot de passe',
+                'label' => 'mot de passe',
                 'rules' => 'required'
             ),
             array(
                 'field' => 'pass2',
-                'label' => 'Mot de passe de confirmation',
+                'label' => 'validation du mot de passe',
                 'rules' => 'required|matches[pass]'
             )
         );
@@ -192,7 +192,7 @@ class Profile extends MY_Controller
         if ($old_pass) {
             $rules[] = array(
                 'field' => 'old_pass',
-                'label' => 'Old password',
+                'label' => 'ancien mot de passe',
                 'rules' => "required|callback_old_pass_check[$id]"
             );
         }
@@ -214,7 +214,7 @@ class Profile extends MY_Controller
         if ($this->user_model->check_pass($id, $str)) {
             return true;
         } else {
-            $this->form_validation->set_message('old_pass_check', 'The {field} field is not match.');
+            $this->form_validation->set_message('old_pass_check', 'Le champ {field} doit correspondre à votre ancien mot de passe.');
             return false;
         }
     }
@@ -230,7 +230,7 @@ class Profile extends MY_Controller
         $rules = array(
             array(
                 'field' => 'confirmation',
-                'label' => 'Confirmation',
+                'label' => 'confirmation',
                 'rules' => 'required'
             )
         );

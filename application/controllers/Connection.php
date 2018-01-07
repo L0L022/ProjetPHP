@@ -22,25 +22,25 @@ class Connection extends MY_Controller
             $this->load->library('form_validation');
             $rules = array(
                 array(
-                    'field' => 'email',
-                    'label' => 'Email',
+                    'field' => 'login',
+                    'label' => 'identifiant',
                     'rules' => 'required'
                 ),
                 array(
                     'field' => 'password',
-                    'label' => 'Mot de passe',
+                    'label' => 'mot de passe',
                     'rules' => 'required'
                 )
             );
             $this->form_validation->set_rules($rules);
 
             if ($this->form_validation->run()) {
-                $user_id = $this->user_model->get_user_id($this->input->post('email'), $this->input->post('password'));
+                $user_id = $this->user_model->get_user_id($this->input->post('login'), $this->input->post('password'));
                 if ($user_id !== null) {
                     $_SESSION['user_id'] = $user_id;
                     $this->_redirect();
                 } else {
-                    $data['errors'] = array('Wrong login.');
+                    $data['errors'] = array('Identifiant ou mot de passe incorrect.');
                 }
             } else {
                 $data['errors'] = $this->form_validation->error_array();

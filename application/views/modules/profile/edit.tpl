@@ -34,7 +34,7 @@
         <div class="field {if not empty(form_error('mail'))}error{/if}">
           <div class="ui left icon input">
             <i class="at icon"></i>
-            <input type="email" name="mail" placeholder="E-mail address" value="{'mail'|set_value}">
+            <input type="email" name="mail" placeholder="Adresse email" value="{'mail'|set_value}">
           </div>
         </div>
         <div class="field {if not empty(form_error('name'))}error{/if}">
@@ -59,7 +59,7 @@
         <div class="field {if not empty(form_error('pass2'))}error{/if}">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="pass2" placeholder="Validation de mot de passe" value="{'pass2'|set_value}">
+            <input type="password" name="pass2" placeholder="Validation du mot de passe" value="{'pass2'|set_value}">
           </div>
         </div>
         {/if}
@@ -67,7 +67,7 @@
         <input type="submit" name="register" value="{if $new ne true}Modifier{else}S'enregistrer{/if}" class="ui fluid large teal button">
       </div>
       <div class="ui success message">
-        {if $new ne true}<p>Votre profil à bien été modifier.</p>{else}<p>Vous vous êtes enregistrer.</p>{/if}</h2>
+        {if $new ne true}<p>Votre profil à bien été modifié.</p>{else}<p>Vous vous êtes enregistré.</p>{/if}</h2>
       </div>
       <div class="ui error message">
        <ul class="list">
