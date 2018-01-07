@@ -16,24 +16,25 @@ class Recipe extends MY_Controller
     {
         $data = &$this->data;
 
-        $this->load->helper('form');
-        $this->load->library('form_validation');
+        if ($this->user_id !== null) {
+            $this->load->helper('form');
+            $this->load->library('form_validation');
 
-        $rules = array(
-            array(
-                'field' => 'comment',
-                'label' => 'Comment',
-                'rules' => 'required'
-            )
-        );
+            $rules = array(
+                array(
+                    'field' => 'comment',
+                    'label' => 'Comment',
+                    'rules' => 'required'
+                )
+            );
+            $this->form_validation->set_rules($rules);
 
-        $this->form_validation->set_rules($rules);
-
-        if ($this->form_validation->run()) {
-            $this->comment_model->insert(array('recipe' => $id, 'creator' => $this->user_id, 'text' => $this->input->post('comment')));
-            redirect(current_url());
-        } else {
-            $data['errors'] = $this->form_validation->error_array();
+            if ($this->form_validation->run()) {
+                $this->comment_model->insert(array('recipe' => $id, 'creator' => $this->user_id, 'text' => $this->input->post('comment')));
+                redirect(current_url());
+            } else {
+                $data['errors'] = $this->form_validation->error_array();
+            }
         }
 
         $data['id'] = $id;
