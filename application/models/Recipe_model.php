@@ -38,7 +38,7 @@ class Recipe_model extends DB_model
         $this->db->limit($number);
         $this->db->from($this->table);
         $query = $this->db->get();
-        return $query->result_array()[0];
+        return $query->result_array();
     }
 
     public function get_comments($id)
