@@ -173,7 +173,7 @@ class Recipe extends MY_Controller
 
         if ($this->input->post('upload') !== null) {
             $config['upload_path']          = $upload_path;
-            $config['allowed_types']        = 'gif|jpg|png';
+            $config['allowed_types']        = 'gif|jpg|jpeg|png|bmp|svg';
             $config['overwrite']            = true;
             $config['max_size']             = 1000;
             $config['encrypt_name']         = true;
