@@ -20,13 +20,13 @@ class Profile extends MY_Controller
         $data = &$this->data;
         $data['id'] = $id;
         $data['user'] = $user;
+        $data['editable'] = true;
         $this->parser->parse('modules/profile/view.tpl', $data);
     }
 
     public function edit($id)
     {
         $new = $id === 'new';
-        $editable = true;
 
         $data = &$this->data;
 
@@ -101,7 +101,6 @@ class Profile extends MY_Controller
 
         $data['id'] = $id;
         $data['new'] = $new;
-        $data['editable'] = $editable;
         $this->parser->parse('modules/profile/edit.tpl', $data);
     }
 
