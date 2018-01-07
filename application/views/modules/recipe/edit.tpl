@@ -10,10 +10,10 @@
   <div class="ui grid">
     <div class="row">
       <div class="four wide column">
-        <form method="get" action="{site_url('profile/view/')}{'creator'|set_value}">
+        <form method="get" action="{site_url('profile/view/')}{$creator}">
           <button class="ui small basic labeled icon button">
             <i class="left chevron icon"></i>
-            Retour vers profil
+            Retour vers le profil
           </button>
         </form>
       </div>
@@ -36,8 +36,8 @@
        </div>
        <div class="field {if not empty(form_error('result_amount'))}error{/if}">
          <label>Catégorie</label>
-         <select required multiple name="categories[]" class="ui search dropdown">
-           <option value="">Select category</option>
+         <select multiple name="categories[]" class="ui search dropdown">
+           <option value="">Selectionnez la ou les catégories</option>
            {foreach $categories as $c}
            <option value="{$c.id}" {set_select('categories', $c.id)}>{$c.label}</option>
            {/foreach}
@@ -72,16 +72,16 @@
         <div class="field {if not empty(form_error('difficulty'))}error{/if}">
           <label>Difficulté</label>
           <select required  name="difficulty" class="ui search dropdown">
-                  <option value="">Selectionne le niveau de difficulté</option>
+                  <option value="">Sélectionnez le niveau de difficulté</option>
                   <option value="easy" {set_select('difficulty', 'easy')}> Facile </option>
-                  <option value="medium" {set_select('difficulty', 'medium')}> Moyen </option>
-                  <option value="hard" {set_select('difficulty', 'hard')}> Dur </option>
+                  <option value="medium" {set_select('difficulty', 'medium')}> Moyenne </option>
+                  <option value="hard" {set_select('difficulty', 'hard')}> Difficile </option>
           </select>
         </div>
         <div class="field {if not empty(form_error('cost'))}error{/if}">
-          <label>Coût de la recette en moyenne</label>
+          <label>Coût moyen de la recette</label>
           <SELECT required name="cost" class="ui search dropdown">
-            <option value="">Selectionne le niveau de difficulté</option>
+            <option value="">Sélectionnez le coût moyen de la recette</option>
             <option value="low" {set_select('cost', 'low')}> Faible </option>
             <option value="average" {set_select('cost', 'average')}> Moyen </option>
             <option value="high" {set_select('cost', 'high')}> Éleve </option>
