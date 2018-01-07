@@ -59,6 +59,22 @@ class Recipe_model extends DB_model
         return $query->result_array();
     }
 
+    public function get_ingredients($id)
+    {
+        $this->load->model('ingredient_model');
+        $this->load->model('unit_model');
+        $this->load->model('join_ingredient_recipe_unit_model', 'jiru_model');
+
+        $this->db->select($this->ingredient_model->get_select());
+        $this->db->select($this->unit_model->get_select('unit_'));
+        $this->db->from($this->jiru_model->table);
+        $this->db->join($this->ingredient_model->get_table(), $this->ingredient_model->get_table().'.'.$this->ingredient_model->get_columns()['id'].'='.$this->jiru_model->table.'.'.$this->jiru_model->columns['ingredient']);
+        $this->db->join($this->unit_model->get_table(), $this->unit_model->get_table().'.'.$this->unit_model->get_columns()['id'].'='.$this->jiru_model->table.'.'.$this->jiru_model->columns['unit']);
+        $this->db->where($this->jiru_model->to_real_name(array('recipe' => $id)));
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function in_category($category)
     {
         $this->load->model('join_category_recipe_model', 'jcr');

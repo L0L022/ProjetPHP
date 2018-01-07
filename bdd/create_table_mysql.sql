@@ -20,7 +20,7 @@ CREATE TABLE T_UNIT_UNT (
   UNT_ID bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   UNT_LABEL varchar(30) NOT NULL,
   UNT_SHORT_LABEL varchar(15) NOT NULL,
-  USR_ID bigint(20) unsigned NOT NULL,
+  USR_ID bigint(20) unsigned NULL DEFAULT NULL,
   PRIMARY KEY (UNT_ID),
   UNIQUE (UNT_LABEL),
   UNIQUE (UNT_SHORT_LABEL),
@@ -76,8 +76,8 @@ CREATE TABLE TJ_CAT_RCP (
 CREATE TABLE T_INGREDIENT_IGD (
   IGD_ID bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   IGD_LABEL varchar(255) NOT NULL,
-  IGD_DESCRIPTION mediumtext NOT NULL,
-  IGD_ILLUSTRATION varchar(80) NULL DEFAULT NULL,
+  IGD_DESCRIPTION mediumtext NOT NULL DEFAULT '',
+  IGD_ILLUSTRATION varchar(80) NOT NULL DEFAULT '',
   USR_ID bigint(20) unsigned NULL DEFAULT NULL,
   PRIMARY KEY (IGD_ID),
   UNIQUE (IGD_LABEL),
@@ -133,3 +133,8 @@ insert into TJ_CAT_RCP values(2, 6);
 insert into TJ_CAT_RCP values(3, 7);
 insert into TJ_CAT_RCP values(3, 8);
 insert into TJ_CAT_RCP values(3, 9);
+
+insert into T_UNIT_UNT values (1,'Gramme','g',NULL), (2,'Kilogramme','kg',NULL), (3,'Litre','l',NULL), (4,'Centilitre','cl',NULL), (5,'Poney','pp', 2);
+insert into T_INGREDIENT_IGD values (1,'Chocolat noir','Du bon chocolat','',NULL), (2,'Chocolat blanc','Du bon chocolat de qualité','',NULL), (3,'Lait','vient de la vache','',NULL), (4,'Farine','De la farine','',NULL);
+
+insert into TJ_IGD_RCP_UNT values (1, 1, 1, 4), (1, 2, 1, 3), (1, 3, 3, 1), (2, 1, 1, 4);
