@@ -87,10 +87,10 @@
       <div class="ui comments">
   <div class="comment">
     <a class="avatar">
-        <img class="ui small rounded image" src="{if $user.avatar eq ''}{base_url('media/avatars/Default.png')}{else}{base_url('media/avatars/')}{$user.avatar}{/if}">
+        <img class="ui small rounded image" src="{if $c.user_avatar eq ''}{base_url('media/avatars/Default.png')}{else}{base_url('media/avatars/')}{$c.user_avatar}{/if}">
     </a>
     <div class="content">
-      <a class="author">NOM DU MEC</a>
+      <a class="author">{$c.user_login}</a>
       <div class="metadata">
         <div class="date">{$c.date}</div>
       </div>

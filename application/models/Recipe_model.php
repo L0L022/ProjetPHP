@@ -18,6 +18,33 @@ class Recipe_model extends DB_model
         'result_type' => 'RCP_RESULT_TYPE', 'result_amount' => 'RCP_RESULT_AMOUNT'));
     }
 
+    public function get_recipe($id)
+    {
+        $this->load->model('user_model');
+
+        $this->db->select($this->get_select());
+        $this->db->select($this->user_model->get_select('user_'));
+        $this->db->from($this->table);
+        $this->db->join($this->user_model->get_table(), $this->user_model->get_table().'.'.$this->user_model->get_columns()['id'].'='.$this->table.'.'.$this->columns['creator']);
+        $this->db->where($this->to_real_name(array('id' => $id))); // NON
+        $query = $this->db->get();
+        return $query->result_array()[0];
+    }
+
+    public function get_comments($id)
+    {
+        $this->load->model('comment_model');
+        $this->load->model('user_model');
+
+        $this->db->select($this->comment_model->get_select());
+        $this->db->select($this->user_model->get_select('user_'));
+        $this->db->from($this->comment_model->table);
+        $this->db->join($this->user_model->get_table(), $this->user_model->get_table().'.'.$this->user_model->get_columns()['id'].'='.$this->comment_model->table.'.'.$this->comment_model->columns['creator']);
+        $this->db->where($this->comment_model->to_real_name(array('recipe' => $id)));
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function in_category($category)
     {
         $this->load->model('join_category_recipe_model', 'jcr');
