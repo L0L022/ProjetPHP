@@ -57,6 +57,7 @@ class Recipe extends MY_Controller
 
         if ($new) {
             $model_data['creator'] = $this->user_id;
+            $_POST['creator'] = $this->user_id;
         }
 
         $data = &$this->data;
