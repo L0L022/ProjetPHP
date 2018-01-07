@@ -49,11 +49,11 @@ abstract class DB_model extends CI_Model
         return $d;
     }
 
-    public function get_select()
+    public function get_select($prefix = '')
     {
         $select = '';
         foreach ($this->columns as $key => $value) {
-            $select .= "$this->table.$value as $key,";
+            $select .= "$this->table.$value as $prefix$key,";
         }
         return $select;
     }
