@@ -51,7 +51,7 @@
           <div class="ui internally celled grid">
             <div class="row">
               <div class="four wide column">
-                <img class="ui fluid rounded image" src="{base_url('media/categories/')}{$value.illustration}">
+                <img class="ui fluid rounded image" src="{if $value.illustration eq ''}{base_url('media/avatars/Default.png')}{else}{base_url('media/illustrations/')}{$value.illustration}{/if}">
               </div>
               <div class="nine wide column">
                 <div class="middle aligned content">
@@ -76,5 +76,4 @@
   </div>
 </div>
 
-{*dessert = blanc repas = marron entrée = green *}
 {/block}

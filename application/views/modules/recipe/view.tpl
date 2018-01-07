@@ -30,7 +30,7 @@
   <div class="ui internally celled grid">
     <div class="row">
       <div class="four wide column">
-        <img class="ui fluid rounded image" src="{base_url('media/illustrations/')}{$recipe.illustration}">
+        <img class="ui fluid rounded image" src="{if $recipe.illustration eq ''}{base_url('media/avatars/Default.png')}{else}{base_url('media/illustrations/')}{$recipe.illustration}{/if}">
       </div>
       <div class="twelve wide column">
         <p>Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at. Usu ocurreret referrentur at, cu epicurei appellantur vix. Cum ea laoreet recteque electram, eos choro alterum definiebas
