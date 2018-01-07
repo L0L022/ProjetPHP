@@ -49,17 +49,17 @@ class Profile extends MY_Controller
              ),
              array(
                  'field' => 'mail',
-                 'label' => 'Email',
+                 'label' => 'Adresse email',
                  'rules' => "required|valid_email|callback_mail_check[$id]"
              ),
              array(
                  'field' => 'name',
-                 'label' => 'Name',
+                 'label' => 'Nom',
                  'rules' => 'required'
              ),
              array(
                  'field' => 'firstname',
-                 'label' => 'Firstname',
+                 'label' => 'Prenom',
                  'rules' => 'required'
              )
          );
@@ -67,12 +67,12 @@ class Profile extends MY_Controller
         if ($new) {
             $rules[] = array(
                 'field' => 'pass',
-                'label' => 'Password',
+                'label' => 'Mot de passe',
                 'rules' => 'required'
             );
             $rules[] = array(
                 'field' => 'pass2',
-                'label' => 'Password confirmation',
+                'label' => 'Mot de passe de confirmation',
                 'rules' => 'required|matches[pass]'
             );
         }
@@ -177,12 +177,12 @@ class Profile extends MY_Controller
         $rules = array(
             array(
                 'field' => 'pass',
-                'label' => 'Password',
+                'label' => 'Mot de passe',
                 'rules' => 'required'
             ),
             array(
                 'field' => 'pass2',
-                'label' => 'Password confirmation',
+                'label' => 'Mot de passe de confirmation',
                 'rules' => 'required|matches[pass]'
             )
         );

@@ -23,7 +23,7 @@ class Recipe extends MY_Controller
             $rules = array(
                 array(
                     'field' => 'comment',
-                    'label' => 'Comment',
+                    'label' => 'Commentaire',
                     'rules' => 'required'
                 )
             );
@@ -96,7 +96,7 @@ class Recipe extends MY_Controller
         $rules = array(
                  array(
                      'field' => 'title',
-                     'label' => 'Title',
+                     'label' => 'Titre',
                      'rules' => "required"
                  ),
                  array(
@@ -106,12 +106,12 @@ class Recipe extends MY_Controller
                  ),
                  array(
                      'field' => 'explanation',
-                     'label' => 'Explanation',
+                     'label' => 'Explication',
                      'rules' => 'required'
                  ),
                  array(
                      'field' => 'result_amount',
-                     'label' => 'Result amount',
+                     'label' => 'Quantité',
                      'rules' => 'required'
                  )
              );

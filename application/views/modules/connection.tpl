@@ -12,16 +12,16 @@
         <div class="field {if not empty(form_error('email'))}error{/if}">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <input type="text" name="email" placeholder="E-mail address" value="{'email'|set_value}">
+            <input type="text" name="email" placeholder="Adresse email" value="{'email'|set_value}">
           </div>
         </div>
         <div class="field {if not empty(form_error('password'))}error{/if}">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Password" value="{'password'|set_value}">
+            <input type="password" name="password" placeholder="Mot de passe" value="{'password'|set_value}">
           </div>
         </div>
-        <input type="submit" name="connection" value="Login" class="ui fluid large teal button">
+        <input type="submit" name="connection" value="Connexion" class="ui fluid large teal button">
         <!-- <div name="connection" class="ui fluid large teal submit button">Login</div> -->
       </div>
       <div class="ui error message">

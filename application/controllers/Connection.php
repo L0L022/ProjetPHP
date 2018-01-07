@@ -28,7 +28,7 @@ class Connection extends MY_Controller
                 ),
                 array(
                     'field' => 'password',
-                    'label' => 'Password',
+                    'label' => 'Mot de passe',
                     'rules' => 'required'
                 )
             );
