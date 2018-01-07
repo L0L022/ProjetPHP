@@ -57,7 +57,7 @@
   <div class="three wide column">
     <div class="ui red segment">
       {foreach $ingredients as $i}
-       <p> <i class="hourglass half icon"></i> {$i.label} {$i.quantity} {$i.unit_short_label}</p>
+       <p> <i class="hourglass half icon"></i> {$i.label} {$i.jiru_quantity} {$i.unit_short_label}</p>
       {/foreach}
     </div>
   </div>
