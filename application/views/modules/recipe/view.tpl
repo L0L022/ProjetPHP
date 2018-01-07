@@ -95,10 +95,11 @@
       <div class="ui comments">
   <div class="comment">
     <a class="avatar">
-        <img class="ui small rounded image" src="{if $c.user_avatar eq ''}{base_url('media/avatars/none.png')}{else}{base_url('media/avatars/')}{$c.user_avatar}{/if}">
+        {if $c.creator == null}<img class="ui small rounded image" src="{base_url('media/avatars/none.png')}">{else}
+        <img class="ui small rounded image" src="{if $c.user_avatar eq ''}{base_url('media/avatars/none.png')}{else}{base_url('media/avatars/')}{$c.user_avatar}{/if}">{/if}
     </a>
     <div class="content">
-      <a class="author" href="{site_url('profile/view/')}{$c.user_id}">{$c.user_login}</a>
+      <a class="author" href="{site_url('profile/view/')}{$c.creator}">{if $c.creator == null}Anonyme{else}{$c.user_login}{/if}</a>
       <div class="metadata">
         <div class="date">Le {$c.date|date_format}</div>
       </div>

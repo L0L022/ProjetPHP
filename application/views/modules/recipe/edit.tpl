@@ -90,19 +90,19 @@
         <div class="field {if not empty(form_error('time_preparation'))}error{/if}">
           <label for="time_preparation">Temps de preparation (hh/mm)</label>
           <div class="ui small input focus">
-            <input required placeholder="temps" type="time" name="time_preparation" value="{'time_preparation'|set_value|date_format:'%H:%M'}">
+            <input required placeholder="temps" type="time" name="time_preparation" value="{set_value('time_preparation','00:00')|date_format:'%H:%M'}">
           </div>
         </div>
         <div class="field {if not empty(form_error('time_cooking'))}error{/if}">
           <label for="time_cooking">Temps de cuisson (hh/mm)</label>
           <div class="ui small input focus">
-            <input placeholder="temps" type="time" name="time_cooking" value="{'time_cooking'|set_value|date_format:'%H:%M'}">
+            <input placeholder="temps" type="time" name="time_cooking" value="{set_value('time_cooking','00:00')|date_format:'%H:%M'}">
           </div>
         </div>
         <div class="field {if not empty(form_error('time_rest'))}error{/if}">
           <label for="time_rest">Temps de repos (hh/mm)</label>
           <div class="ui small input focus">
-            <input placeholder="temps" type="time" name="time_rest" value="{'time_rest'|set_value|date_format:'%H:%M'}">
+            <input placeholder="temps" type="time" name="time_rest" value="{set_value('time_rest','00:00')|date_format:'%H:%M'}">
           </div>
         </div>
         <div class="field {if not empty(form_error('result_amount'))}error{/if}">

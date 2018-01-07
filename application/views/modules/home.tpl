@@ -9,8 +9,8 @@
 <div class="ui center aligned top attached segment">
   <h2 class="ui header">Édito</h2>
 </div>
-<div class="ui attached segment">
-  Le site de cuisine
+<div class="ui center aligned attached segment">
+  Un site de cuisine totalement banal(enfaite non car il y a pas tout.....)
 </div>
 
 <div class="ui center aligned top attached segment">
