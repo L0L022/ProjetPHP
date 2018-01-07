@@ -26,10 +26,9 @@ class Profile extends MY_Controller
     public function edit($id)
     {
         $new = $id === 'new';
+        $editable = true;
 
         $data = &$this->data;
-        $data['id'] = $id;
-        $data['new'] = $new;
 
         if (!$new and count($_POST) === 0) {
             $user = $this->user_model->get_user($id);
@@ -100,6 +99,9 @@ class Profile extends MY_Controller
             $data['errors'] = $this->form_validation->error_array();
         }
 
+        $data['id'] = $id;
+        $data['new'] = $new;
+        $data['editable'] = $editable;
         $this->parser->parse('modules/profile/edit.tpl', $data);
     }
 
