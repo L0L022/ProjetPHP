@@ -18,7 +18,6 @@ class Recipe extends MY_Controller
 
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->_load_lang('form_validation');
 
         $rules = array(
             array(
@@ -91,7 +90,6 @@ class Recipe extends MY_Controller
 
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->_load_lang('form_validation');
 
         $rules = array(
                  array(
@@ -146,7 +144,7 @@ class Recipe extends MY_Controller
                 'ingredient' => $i['ingredient'], 'unit' => $i['unit'],
                 'quantity' => $i['quantity']));
             }
-            
+
             $data['success'] = true;
         } else {
             $data['errors'] = $this->form_validation->error_array();
@@ -206,7 +204,6 @@ class Recipe extends MY_Controller
 
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->_load_lang('form_validation');
 
         $rules = array(
             array(

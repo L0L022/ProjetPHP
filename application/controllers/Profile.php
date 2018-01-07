@@ -40,7 +40,6 @@ class Profile extends MY_Controller
 
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->_load_lang('form_validation');
 
         $rules = array(
              array(
@@ -95,7 +94,7 @@ class Profile extends MY_Controller
                 $user['id'] = $id;
                 $this->user_model->update($user);
             }
-            
+
             $data['success'] = true;
         } else {
             $data['errors'] = $this->form_validation->error_array();
@@ -172,7 +171,6 @@ class Profile extends MY_Controller
 
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->_load_lang('form_validation');
 
         $rules = array(
             array(
@@ -205,7 +203,6 @@ class Profile extends MY_Controller
 
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->_load_lang('form_validation');
 
         $rules = array(
             array(
