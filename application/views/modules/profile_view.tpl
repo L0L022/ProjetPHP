@@ -36,7 +36,7 @@
               <p>Nombre de recettes : </p>
           </div>
           <div class="four wide column">
-            <form method="get" action="{site_url('recipe/edition')}">
+            <form method="get" action="{site_url('recipe/edit/1')}">
                 <button class="ui inverted green button" type="submit">Nouvelle recette</button>
             </form>
           </div>
@@ -60,7 +60,7 @@
               </div>
               </div>
               <div class="three wide column">
-                  <form method="get" action="{site_url('recipe/edition')}">
+                  <form method="get" action="{site_url('recipe/edit/1')}">
                     <button class="fluid positive ui button">Modifier</button>
                   </form>
                 </br>

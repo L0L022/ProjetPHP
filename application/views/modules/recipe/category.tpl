@@ -5,7 +5,7 @@
   <div class="ui grid">
     <div class="row">
       <div class="four wide column">
-        <form method="get" action="{site_url('recipe')}">
+        <form method="get" action="{site_url('recipe/categories')}">
           <button class="ui small basic labeled icon button">
             <i class="left chevron icon"></i>
             Retour vers categorie
