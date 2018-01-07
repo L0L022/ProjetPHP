@@ -31,6 +31,16 @@ class Recipe_model extends DB_model
         return $query->result_array()[0];
     }
 
+    public function get_rand_recipe($number)
+    {
+        $this->db->select($this->get_select());
+        $this->db->order_by('', 'RANDOM');
+        $this->db->limit($number);
+        $this->db->from($this->table);
+        $query = $this->db->get();
+        return $query->result_array()[0];
+    }
+
     public function get_comments($id)
     {
         $this->load->model('comment_model');

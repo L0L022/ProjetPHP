@@ -11,14 +11,10 @@ class Home extends MY_Controller
 
     public function index()
     {
-        $alea = array();
-
-        for ($i=0; $i < 3; $i++) {
-            $alea[$i]=rand()*100;
-        }
+        $this->load->model('recipe_model');
 
         $data = &$this->data;
-        $data['alea']=$alea;
+        $data['recipes'] = $this->recipe_model->get_rand_recipe(3);
         $this->parser->parse("modules/home.tpl", $data);
     }
 }
