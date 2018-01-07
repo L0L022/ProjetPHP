@@ -31,6 +31,16 @@ class Recipe_model extends DB_model
         return $query->result_array()[0];
     }
 
+    public function get_rand_recipe($number)
+    {
+        $this->db->select($this->get_select());
+        $this->db->order_by('', 'RANDOM');
+        $this->db->limit($number);
+        $this->db->from($this->table);
+        $query = $this->db->get();
+        return $query->result_array()[0];
+    }
+
     public function get_comments($id)
     {
         $this->load->model('comment_model');
@@ -67,6 +77,7 @@ class Recipe_model extends DB_model
 
         $this->db->select($this->ingredient_model->get_select());
         $this->db->select($this->unit_model->get_select('unit_'));
+        $this->db->select($this->jiru_model->get_select('jiru_'));
         $this->db->from($this->jiru_model->table);
         $this->db->join($this->ingredient_model->get_table(), $this->ingredient_model->get_table().'.'.$this->ingredient_model->get_columns()['id'].'='.$this->jiru_model->table.'.'.$this->jiru_model->columns['ingredient']);
         $this->db->join($this->unit_model->get_table(), $this->unit_model->get_table().'.'.$this->unit_model->get_columns()['id'].'='.$this->jiru_model->table.'.'.$this->jiru_model->columns['unit']);
