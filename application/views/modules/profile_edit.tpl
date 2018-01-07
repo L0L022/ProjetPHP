@@ -1,12 +1,8 @@
 {extends file="../layout.tpl"}
 
-{block name="css"}
-<link rel="stylesheet" type="text/css" href="{base_url('assets/css/registration.css')}">
-{/block}
-
 {block name="body"}
 <div class="ui center aligned segment">
-  <h2 class="ui header">{if $user_id !== null}Modification du compte{else}S'enregistrer{/if}</h2>
+  <h2 class="ui header">{if $new_profile ne true}Modification du compte{else}S'enregistrer{/if}</h2>
 </div>
 
 <div class="ui middle aligned center aligned grid">
@@ -37,6 +33,7 @@
             <input type="text" name="firstname" placeholder="Prénom" value="{'firstname'|set_value}">
           </div>
         </div>
+        {if $new_profile eq true}
         <div class="field {if not empty(form_error('pass'))}error{/if}">
           <div class="ui left icon input">
             <i class="lock icon"></i>
@@ -49,8 +46,9 @@
             <input type="password" name="pass2" placeholder="Validation de mot de passe" value="{'pass2'|set_value}">
           </div>
         </div>
+        {/if}
         <!-- <div class="ui fluid large teal submit button">Register</div> -->
-        <input type="submit" name="register" value="Register" class="ui fluid large teal button">
+        <input type="submit" name="register" value="{if $new_profile ne true}Modifier{else}S'enregistrer{/if}" class="ui fluid large teal button">
       </div>
       <div class="ui error message">
        <ul class="list">
@@ -62,6 +60,7 @@
     </form>
   </div>
 </div>
+
 {/block}
 
 {block name="javascript"}

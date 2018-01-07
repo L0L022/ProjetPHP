@@ -1,7 +1,7 @@
 <a class="{if $page eq 'home'}active{/if} item" href="{site_url('home')}">
   Accueil
 </a>
-<a class="{if $page eq 'recipe'}active{/if} item" href="{site_url('recipe')}">
+<a class="{if $page eq 'recipe'}active{/if} item" href="{site_url('recipe/categories')}">
   Recettes
 </a>
 {if $user_id !== null}

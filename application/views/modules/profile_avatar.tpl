@@ -6,12 +6,12 @@
 
 {block name="body"}
 <div class="ui center aligned segment">
-  <h2 class="ui header">Modifier son avatar</h2>
+  <h2 class="ui header">Modification avatar</h2>
 </div>
 
 <div class="ui middle aligned center aligned grid">
   <div class="column">
-   <img src="{base_url('media/avatars/')}{$avatar}" alt="">
+    <img class="ui centered medium rounded image" src="{base_url('media/avatars/')}{$avatar}" alt="">
     <form class="ui large form {if not empty($errors)}error{/if}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
       <div class="ui stacked segment">
         <div class="field">

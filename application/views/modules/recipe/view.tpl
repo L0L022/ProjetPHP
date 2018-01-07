@@ -80,6 +80,29 @@
   <h2 class="ui header">Espace commentaire</h2>
 </div>
 <div class = "ui attached segment">
-  Les commentaire
+  <div class="ui internally celled grid">
+    {foreach $comments as $c}
+    <div class="row">
+
+      <div class="ui comments">
+  <div class="comment">
+    <a class="avatar">
+        <img class="ui small rounded image" src="{if $user.avatar eq ''}{base_url('media/avatars/Default.png')}{else}{base_url('media/avatars/')}{$user.avatar}{/if}">
+    </a>
+    <div class="content">
+      <a class="author">NOM DU MEC</a>
+      <div class="metadata">
+        <div class="date">{$c.date}</div>
+      </div>
+      <div class="text">
+        {$c.text}
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+    {/foreach}
+  </div>
 </div>
 {/block}
