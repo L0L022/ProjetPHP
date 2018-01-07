@@ -30,7 +30,7 @@
   <div class="ui internally celled grid">
     <div class="row">
       <div class="four wide column">
-        <img class="ui fluid rounded image" src="{if $recipe.illustration eq ''}{base_url('media/avatars/Default.png')}{else}{base_url('media/illustrations/')}{$recipe.illustration}{/if}">
+        <img class="ui fluid rounded image" src="{if $recipe.illustration eq ''}{base_url('media/illustrations/recipe.png')}{else}{base_url('media/illustrations/')}{$recipe.illustration}{/if}">
       </div>
       <div class="twelve wide column">
         {$recipe.description}
@@ -95,7 +95,7 @@
       <div class="ui comments">
   <div class="comment">
     <a class="avatar">
-        <img class="ui small rounded image" src="{if $c.user_avatar eq ''}{base_url('media/avatars/Default.png')}{else}{base_url('media/avatars/')}{$c.user_avatar}{/if}">
+        <img class="ui small rounded image" src="{if $c.user_avatar eq ''}{base_url('media/avatars/none.png')}{else}{base_url('media/avatars/')}{$c.user_avatar}{/if}">
     </a>
     <div class="content">
       <a class="author" href="{site_url('profile/view/')}{$c.user_id}">{$c.user_login}</a>

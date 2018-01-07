@@ -25,7 +25,7 @@
   {foreach $recipes as $r}
   <a class="item" href="{site_url('recipe/view/')}{$r.id}">
     <div class="ui small rounded image">
-      <img class="ui fluid rounded image" src="{if $r.illustration eq ''}{base_url('media/avatars/Default.png')}{else}{base_url('media/illustrations/')}{$r.illustration}{/if}">
+      <img class="ui fluid rounded image" src="{if $r.illustration eq ''}{base_url('media/illustrations/recipe.png')}{else}{base_url('media/illustrations/')}{$r.illustration}{/if}">
     </div>
     <div class="middle aligned content">
       <div class="header">{$r.title}</div>

@@ -17,7 +17,7 @@
         </form>
       </div>
       <div class="eight wide column">
-        <h2 class="ui header">Modification illustration</h2>
+        <h2 class="ui header">Modification de l'illustration</h2>
       </div>
       <div class="four wide column">
       </div>
@@ -27,8 +27,8 @@
 
 <div class="ui middle aligned center aligned grid">
   <div class="column">
-    <img class="ui centered medium rounded image" src="{base_url('media/illustrations/')}{$illustration}" alt="">
-    <form class="ui large form {if not empty($errors)}error{/if}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+    <img class="ui centered medium rounded image" src="{base_url('media/illustrations/')}{$recipe.illustration}" alt="">
+      <form class="ui large form {if not empty($success)}success{/if}{if not empty($errors)}error{/if}" method="post" accept-charset="utf-8"  enctype="multipart/form-data">
       <div class="ui stacked segment">
         <div class="field">
             <div class="ui fluid file input action">
@@ -40,9 +40,12 @@
                 </div>
             </div>
         </div>
-        <input type="submit" name="upload" value="Upload illustration" class="ui fluid large teal button">
+        <input type="submit" name="upload" value="Envoyer l'illustration" class="ui fluid large teal button">
         <br>
-        {if $illustration ne ""}<input type="submit" name="remove" value="Remove illustration" class="ui fluid large teal button">{/if}
+        {if $recipe.illustration ne ""}<input type="submit" name="remove" value="Supprimer l'illustration" class="ui fluid large teal button">{/if}
+      </div>
+      <div class="ui success message">
+        <p>Votre illustration à bien été modifier.</p>
       </div>
       <div class="ui error message">
        <ul class="list">
