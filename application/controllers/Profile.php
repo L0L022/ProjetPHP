@@ -25,13 +25,13 @@ class Profile extends MY_Controller
 
     public function edit($id)
     {
-        $new_profile = $id === 'new';
+        $new = $id === 'new';
 
         $data = &$this->data;
         $data['id'] = $id;
-        $data['new_profile'] = $new_profile;
+        $data['new'] = $new;
 
-        if (!$new_profile and count($_POST) === 0) {
+        if (!$new and count($_POST) === 0) {
             $user = $this->user_model->get_user($id);
             foreach (array('login', 'mail', 'name', 'firstname', 'level') as $v) {
                 $_POST[$v] = $user[$v];
@@ -40,7 +40,6 @@ class Profile extends MY_Controller
 
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->_load_lang('form_validation');
 
         $rules = array(
              array(
@@ -65,7 +64,7 @@ class Profile extends MY_Controller
              )
          );
 
-        if ($new_profile) {
+        if ($new) {
             $rules += array(
                 'field' => 'pass',
                 'label' => 'Password',
@@ -87,16 +86,16 @@ class Profile extends MY_Controller
                 $user[$v] = $this->input->post($v);
             }
 
-            if ($new_profile) {
+            if ($new) {
                 $user['level'] = 1;
                 $user['pass'] = $this->input->post('pass');
                 $this->user_model->register($user);
-                $data['success'] = 'Profil créé.';
             } else {
                 $user['id'] = $id;
                 $this->user_model->update($user);
-                $data['success'] = 'Profil mis à jour.';
             }
+
+            $data['success'] = true;
         } else {
             $data['errors'] = $this->form_validation->error_array();
         }
@@ -143,7 +142,7 @@ class Profile extends MY_Controller
 
         if ($this->input->post('upload') !== null) {
             $config['upload_path']          = './media/avatars/';
-            $config['allowed_types']        = 'gif|jpg|png';
+            $config['allowed_types']        = 'gif|jpg|jpeg|png|bmp|svg';
             $config['overwrite']            = true;
             $config['max_size']             = 1000;
             $config['encrypt_name']         = true;
@@ -156,7 +155,7 @@ class Profile extends MY_Controller
                 }
                 $avatar = $this->upload->data()['file_name'];
                 $this->user_model->update(array('id' => $id, 'avatar' => $avatar));
-                $data['success'] = 'Avatar mis à jour.';
+                $data['success'] = true;
             } else {
                 $data['errors'] = array($this->upload->display_errors('', ''));
             }
@@ -172,7 +171,6 @@ class Profile extends MY_Controller
 
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->_load_lang('form_validation');
 
         $rules = array(
             array(
@@ -190,7 +188,7 @@ class Profile extends MY_Controller
 
         if ($this->form_validation->run()) {
             $this->user_model->update_pass($id, $this->input->post('pass'));
-            $data['success'] = 'Mot de passe mis à jour.';
+            $data['success'] = true;
         } else {
             $data['errors'] = $this->form_validation->error_array();
         }
@@ -205,7 +203,6 @@ class Profile extends MY_Controller
 
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->_load_lang('form_validation');
 
         $rules = array(
             array(
@@ -218,7 +215,7 @@ class Profile extends MY_Controller
 
         if ($this->form_validation->run()) {
             $this->user_model->delete(array('id' => $id));
-            $data['success'] = 'Compte supprimé.';
+            $data['success'] = true;
         } else {
             $data['errors'] = $this->form_validation->error_array();
         }

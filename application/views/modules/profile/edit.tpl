@@ -5,7 +5,7 @@
   <div class="ui grid">
     <div class="row">
       <div class="four wide column">
-        {if $new_profile ne true}<form method="get" action="{site_url('profile/view/')}{$id}">
+        {if $new ne true}<form method="get" action="{site_url('profile/view/')}{$id}">
           <button class="ui small basic labeled icon button">
             <i class="left chevron icon"></i>
             Retour vers profil
@@ -13,7 +13,7 @@
         </form>{/if}
       </div>
       <div class="eight wide column">
-        <h2 class="ui header">{if $new_profile ne true}Modification du compte{else}S'enregistrer{/if}</h2>
+        <h2 class="ui header">{if $new ne true}Modification du compte{else}S'enregistrer{/if}</h2>
       </div>
       <div class="four wide column">
       </div>
@@ -49,7 +49,7 @@
             <input type="text" name="firstname" placeholder="Prénom" value="{'firstname'|set_value}">
           </div>
         </div>
-        {if $new_profile eq true}
+        {if $new eq true}
         <div class="field {if not empty(form_error('pass'))}error{/if}">
           <div class="ui left icon input">
             <i class="lock icon"></i>
@@ -64,7 +64,7 @@
         </div>
         {/if}
         <!-- <div class="ui fluid large teal submit button">Register</div> -->
-        <input type="submit" name="register" value="{if $new_profile ne true}Modifier{else}S'enregistrer{/if}" class="ui fluid large teal button">
+        <input type="submit" name="register" value="{if $new ne true}Modifier{else}S'enregistrer{/if}" class="ui fluid large teal button">
       </div>
       <div class="ui error message">
        <ul class="list">

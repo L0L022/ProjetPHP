@@ -16,30 +16,31 @@ class Recipe extends MY_Controller
     {
         $data = &$this->data;
 
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        $this->_load_lang('form_validation');
+        if ($this->user_id !== null) {
+            $this->load->helper('form');
+            $this->load->library('form_validation');
 
-        $rules = array(
-            array(
-                'field' => 'comment',
-                'label' => 'Comment',
-                'rules' => 'required'
-            )
-        );
+            $rules = array(
+                array(
+                    'field' => 'comment',
+                    'label' => 'Comment',
+                    'rules' => 'required'
+                )
+            );
+            $this->form_validation->set_rules($rules);
 
-        $this->form_validation->set_rules($rules);
-
-        if ($this->form_validation->run()) {
-            $this->comment_model->insert(array('recipe' => $id, 'creator' => $this->user_id, 'text' => $this->input->post('comment')));
-            redirect(current_url());
-        } else {
-            $data['errors'] = $this->form_validation->error_array();
+            if ($this->form_validation->run()) {
+                $this->comment_model->insert(array('recipe' => $id, 'creator' => $this->user_id, 'text' => $this->input->post('comment')));
+                redirect(current_url());
+            } else {
+                $data['errors'] = $this->form_validation->error_array();
+            }
         }
 
         $data['id'] = $id;
         $data['recipe'] = $this->recipe_model->get_recipe($id);
         $data['categories'] = $this->recipe_model->get_categories($id);
+        $data['ingredients'] = $this->recipe_model->get_ingredients($id);
         $data['comments'] = $this->recipe_model->get_comments($id);
         $this->parser->parse('modules/recipe/view.tpl', $data);
     }
@@ -47,6 +48,9 @@ class Recipe extends MY_Controller
     public function edit($id)
     {
         $this->load->model('join_category_recipe_model', 'jcr');
+        $this->load->model('ingredient_model');
+        $this->load->model('unit_model');
+        $this->load->model('join_ingredient_recipe_unit_model', 'jiru_model');
 
         $new = $id === 'new';
         $model = &$this->recipe_model;
@@ -59,16 +63,27 @@ class Recipe extends MY_Controller
         $data['id'] = $id;
         $data['new'] = $new;
         $data['categories'] = $this->category_model->get();
+        $date['ingredients'] =  $this->ingredient_model->get();
+        $data['units'] =  $this->unit_model->get();
 
         $columns_keys = array_keys($model->get_columns());
         $columns_keys[] = 'categories';
+        $columns_keys[] = 'ingredients';
+
+        $model_data['categories'] = array();
+        $model_data['ingredients'] = array();
 
         if (!$new and count($_POST) === 0) {
             $model_data = $model->get(array('id' => $id))[0];
-            $model_data['categories'] = array();
+
             foreach ($this->jcr->get(array('recipe' => $id)) as $r) {
                 $model_data['categories'][] = $r['category'];
             }
+
+            foreach ($this->jiru_model->get(array('recipe' => $id)) as $r) {
+                $model_data['ingredients'][] = array('ingredient' => $r['ingredient'], 'unit' => $r['unit'], 'quantity' => $r['quantity']);
+            }
+
             foreach ($columns_keys as $v) {
                 $_POST[$v] = $model_data[$v];
             }
@@ -76,7 +91,6 @@ class Recipe extends MY_Controller
 
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->_load_lang('form_validation');
 
         $rules = array(
                  array(
@@ -112,17 +126,26 @@ class Recipe extends MY_Controller
                 }
             }
 
+            if ($new) {
+                $model->insert($model_data);
+                $id = $this->db->insert_id();
+            } else {
+                $model_data['id'] = $id;
+                $model->update($model_data);
+            }
+
             $this->jcr->delete(array('recipe' => $id));
             foreach ($model_data['categories'] as $c) {
                 $this->jcr->insert(array('recipe' => $id, 'category' => $c));
             }
 
-            if ($new) {
-                $model->insert($model_data);
-            } else {
-                $model_data['id'] = $id;
-                $model->update($model_data);
+            $this->jiru_model->delete(array('recipe' => $id));
+            foreach ($model_data['ingredients'] as $i) {
+                $this->jiru_model->insert(array('recipe' => $id,
+                'ingredient' => $i['ingredient'], 'unit' => $i['unit'],
+                'quantity' => $i['quantity']));
             }
+
             $data['success'] = true;
         } else {
             $data['errors'] = $this->form_validation->error_array();
@@ -151,7 +174,7 @@ class Recipe extends MY_Controller
 
         if ($this->input->post('upload') !== null) {
             $config['upload_path']          = $upload_path;
-            $config['allowed_types']        = 'gif|jpg|png';
+            $config['allowed_types']        = 'gif|jpg|jpeg|png|bmp|svg';
             $config['overwrite']            = true;
             $config['max_size']             = 1000;
             $config['encrypt_name']         = true;
@@ -182,7 +205,6 @@ class Recipe extends MY_Controller
 
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->_load_lang('form_validation');
 
         $rules = array(
             array(

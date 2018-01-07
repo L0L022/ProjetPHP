@@ -20,7 +20,6 @@ class Connection extends MY_Controller
 
         if ($this->input->post('disable_form_validation') === null) {
             $this->load->library('form_validation');
-            $this->_load_lang('form_validation');
             $rules = array(
                 array(
                     'field' => 'email',
