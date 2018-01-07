@@ -91,12 +91,12 @@ class Profile extends MY_Controller
                 $user['level'] = 1;
                 $user['pass'] = $this->input->post('pass');
                 $this->user_model->register($user);
-                $data['success'] = 'Profil créé.';
             } else {
                 $user['id'] = $id;
                 $this->user_model->update($user);
-                $data['success'] = 'Profil mis à jour.';
             }
+            
+            $data['success'] = true;
         } else {
             $data['errors'] = $this->form_validation->error_array();
         }
@@ -156,7 +156,7 @@ class Profile extends MY_Controller
                 }
                 $avatar = $this->upload->data()['file_name'];
                 $this->user_model->update(array('id' => $id, 'avatar' => $avatar));
-                $data['success'] = 'Avatar mis à jour.';
+                $data['success'] = true;
             } else {
                 $data['errors'] = array($this->upload->display_errors('', ''));
             }
@@ -190,7 +190,7 @@ class Profile extends MY_Controller
 
         if ($this->form_validation->run()) {
             $this->user_model->update_pass($id, $this->input->post('pass'));
-            $data['success'] = 'Mot de passe mis à jour.';
+            $data['success'] = true;
         } else {
             $data['errors'] = $this->form_validation->error_array();
         }
@@ -218,7 +218,7 @@ class Profile extends MY_Controller
 
         if ($this->form_validation->run()) {
             $this->user_model->delete(array('id' => $id));
-            $data['success'] = 'Compte supprimé.';
+            $data['success'] = true;
         } else {
             $data['errors'] = $this->form_validation->error_array();
         }
