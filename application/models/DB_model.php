@@ -69,7 +69,6 @@ abstract class DB_model extends CI_Model
 
     public function insert($data)
     {
-        print_r($data);
         $this->db->set($this->to_real_name($data));
         if ($this->db->insert($this->table) === false) {
             show_error('Model, impossible de rajouter la bdd.');
