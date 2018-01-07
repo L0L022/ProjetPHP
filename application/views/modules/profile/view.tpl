@@ -51,7 +51,7 @@
           <div class="ui internally celled grid">
             <div class="row">
               <div class="four wide column">
-                <img class="ui fluid rounded image" src="{base_url('media/categories/')}{$value.illustration}">
+                <img class="ui fluid rounded image" src="{if $value.illustration eq ''}{base_url('media/avatars/Default.png')}{else}{base_url('media/illustrations/')}{$value.illustration}{/if}">
               </div>
               <div class="nine wide column">
                 <div class="middle aligned content">
@@ -60,11 +60,15 @@
               </div>
               </div>
               <div class="three wide column">
-                  <form method="get" action="{site_url('recipe/edit/1')}">
-                    <button class="fluid positive ui button">Modifier</button>
+                <form method="get" action="{site_url('recipe/illustration/')}{$value.id}">
+                  <button class="fluid blue ui button">Modifier l'image</button>
+                </form>
+                </br>
+                  <form method="get" action="{site_url('recipe/edit/')}{$value.id}">
+                    <button class="fluid positive ui button">Editer recette</button>
                   </form>
                 </br>
-                  <form method="get" action="{site_url('recipe/edition')}">
+                  <form method="get" action="{site_url('recipe/delete/')}{$value.id}">
                     <button class="fluid negative ui button">Supprimer</button>
                   </form>
               </div>
@@ -76,5 +80,4 @@
   </div>
 </div>
 
-{*dessert = blanc repas = marron entrée = green *}
 {/block}

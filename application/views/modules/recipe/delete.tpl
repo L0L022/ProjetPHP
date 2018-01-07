@@ -6,15 +6,31 @@
 
 {block name="body"}
 <div class="ui center aligned segment">
-  <h2 class="ui header">Supprimer votre recette</h2>
+  <div class="ui grid">
+    <div class="row">
+      <div class="four wide column">
+        <form method="get" action="{site_url('profile/view/')}{$user_id}">
+          <button class="ui small basic labeled icon button">
+            <i class="left chevron icon"></i>
+            Retour vers Profil
+          </button>
+        </form>
+      </div>
+      <div class="eight wide column">
+        <h2 class="ui header">Supprimer votre recette</h2>
+      </div>
+      <div class="four wide column">
+      </div>
+    </div>
+  </div>
 </div>
+
 
 <div class="ui middle aligned center aligned grid">
   <div class="column">
     <form class="ui large form {if not empty($errors)}error{/if}" method="post" accept-charset="utf-8">
       <div class="ui stacked segment">
-        Êtes-vous sûr de supprimer votre compte ? </br>
-        Cela supprimera toutes vos recettes mais laissera vos commentaire sur le site.
+        Êtes-vous sûr de supprimer votre recette ? </br>
         </br>
         </br>
        <div class="ui checkbox">
@@ -34,9 +50,6 @@
        </ul>
       </div>
     </form>
-      <form method="get" action="{site_url('profile/view/')}{$user_id}">
-        <input type="submit" name="return" value="Annuler" class="ui fluid large green button">
-      </form>
       </div>
   </div>
 </div>
