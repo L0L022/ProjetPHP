@@ -16,13 +16,13 @@
 </div>
 <div class="ui horizontal segments">
   <div class="ui center aligned segment">
-    <p>Créer par {$recipe.date_create}</p>
+    <p>Créer par {$recipe.user_login}</p>
   </div>
   <div class="ui center aligned segment">
-    <p>Créer le {$recipe.date_create}</p>
+    <p>Créer le {$recipe.date_create|date_format:"%D"}</p>
   </div>
   <div class="ui center aligned segment">
-    <p>Modifier le {$recipe.date_modif}</p>
+    <p>Modifier le {$recipe.date_modif|date_format:"%D"}</p>
   </div>
 </div>
 
@@ -80,10 +80,23 @@
   <h2 class="ui header">Espace commentaire</h2>
 </div>
 <div class = "ui attached segment">
+  <form>
+  <div class="ui form">
+  <div class="field">
+    <label>Ajouter votre commentaire</label>
+    {* value="{'explanation'|set_value}"  *}
+  <textarea rows="5" cols="50" placeholder="Describe yourself here..." name="comment">
+  </textarea>
+  </div>
+</div>
+  <button class="positive ui button" name="comment">Ajouter</button>
+</form>
+</br>
   <div class="ui internally celled grid">
+  <div class="row">
+  </div>
     {foreach $comments as $c}
     <div class="row">
-
       <div class="ui comments">
   <div class="comment">
     <a class="avatar">
@@ -92,7 +105,7 @@
     <div class="content">
       <a class="author">{$c.user_login}</a>
       <div class="metadata">
-        <div class="date">{$c.date}</div>
+        <div class="date">Le {$c.date|date_format}</div>
       </div>
       <div class="text">
         {$c.text}

@@ -47,7 +47,7 @@
     <div class="ui grey attached segment">
       <div class="ui divided link items">
       {foreach $user.recettes as $value}
-      <a class = "item" href="{site_url('recipe/id/')}{$value.id}">
+      <a class = "item" href="{site_url('recipe/view/')}{$value.id}">
           <div class="ui internally celled grid">
             <div class="row">
               <div class="four wide column">
