@@ -25,13 +25,13 @@ class Profile extends MY_Controller
 
     public function edit($id)
     {
-        $new_profile = $id === 'new';
+        $new = $id === 'new';
 
         $data = &$this->data;
         $data['id'] = $id;
-        $data['new_profile'] = $new_profile;
+        $data['new'] = $new;
 
-        if (!$new_profile and count($_POST) === 0) {
+        if (!$new and count($_POST) === 0) {
             $user = $this->user_model->get_user($id);
             foreach (array('login', 'mail', 'name', 'firstname', 'level') as $v) {
                 $_POST[$v] = $user[$v];
@@ -64,7 +64,7 @@ class Profile extends MY_Controller
              )
          );
 
-        if ($new_profile) {
+        if ($new) {
             $rules += array(
                 'field' => 'pass',
                 'label' => 'Password',
@@ -86,7 +86,7 @@ class Profile extends MY_Controller
                 $user[$v] = $this->input->post($v);
             }
 
-            if ($new_profile) {
+            if ($new) {
                 $user['level'] = 1;
                 $user['pass'] = $this->input->post('pass');
                 $this->user_model->register($user);
