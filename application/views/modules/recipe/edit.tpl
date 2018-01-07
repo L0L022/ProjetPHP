@@ -10,7 +10,7 @@
   <div class="ui grid">
     <div class="row">
       <div class="four wide column">
-        <form method="get" action="{site_url('profile/view/')}{$id}">
+        <form method="get" action="{site_url('profile/view/')}{$recipe.creator}">
           <button class="ui small basic labeled icon button">
             <i class="left chevron icon"></i>
             Retour vers profil
@@ -47,6 +47,24 @@
           <label for="title">Description</label>
           <textarea rows="1" cols="50" name="description" placeholder="Description">{'description'|set_value}</textarea>
         </div>
+        <div class="field {if not empty(form_error('description'))}error{/if}">
+          <label for="title">Ingredients</label>
+          <div class="ui grid">
+            <div class="row">
+               <div class="thirteen wide column">
+          <select required class="ui fluid search dropdown">
+            <option value="">Ingredient</option>
+            {foreach $ingredients as $i}
+              <option value="{$i.id}">{$i.label}</option>
+            {/foreach}
+          </select>
+        </div>
+        <div class="three wide column">
+          <button class="positive fluid ui button">Ajouter</button>
+        </div>
+        </div>
+      </div>
+    </div>
         <div class="field {if not empty(form_error('explanation'))}error{/if}">
           <label for="title">Explication</label>
           <textarea required rows="5" cols="50" name="explanation" placeholder="Explication">{'explanation'|set_value}</textarea>
