@@ -59,7 +59,7 @@ class Recipe extends MY_Controller
         $data['id'] = $id;
         $data['new'] = $new;
         $data['categories'] = $this->category_model->get();
-        $date['ingredients'] =  $this->ingredient_model->get();
+        $data['ingredients'] =  $this->ingredient_model->get();
         $data['units'] =  $this->unit_model->get();
 
         $columns_keys = array_keys($model->get_columns());
@@ -109,6 +109,11 @@ class Recipe extends MY_Controller
                      'label' => 'quantité',
                      'rules' => 'required'
                  )
+                 ,
+                 array(
+                     'field' => 'ingredients',
+                     'label' => 'ingrédients'
+                    )
              );
 
         // si admin check le niveau
@@ -121,7 +126,7 @@ class Recipe extends MY_Controller
             $model_data['creator'] = $model->get(array('id' => $id))[0]['creator'];
         }
 
-        if ($this->form_validation->run()) {
+        if ($this->form_validation->run() and $this->ingredients_check()) {
             foreach ($columns_keys as $v) {
                 if ($this->input->post($v) !== null) {
                     $model_data[$v] = $this->input->post($v);
@@ -155,6 +160,11 @@ class Recipe extends MY_Controller
 
         $data['creator'] = $model_data['creator'];
         $this->parser->parse('modules/recipe/edit.tpl', $data);
+    }
+
+    public function ingredients_check()
+    {
+        return true;
     }
 
     public function illustration($id)

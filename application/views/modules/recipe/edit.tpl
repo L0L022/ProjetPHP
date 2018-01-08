@@ -47,24 +47,11 @@
           <label for="title">Description</label>
           <textarea rows="1" cols="50" name="description" placeholder="Description">{'description'|set_value}</textarea>
         </div>
-        {* <div class="field {if not empty(form_error('ingredients'))}error{/if}">
-          <label for="title">Ingredients</label>
-          <div class="ui grid">
-            <div class="row">
-               <div class="thirteen wide column">
-          <select required class="ui fluid search dropdown">
-            <option value="">Ingredient</option>
-            {foreach $ingredients as $i}
-              <option value="{$i.id}">{$i.label}</option>
-            {/foreach}
-          </select>
+        <div class="field {if not empty(form_error('ingredients'))}error{/if}">
+          <label>Ingrédients</label>
+          <div id="ingredients"></div>
+          <div id="new_ingredient" class="positive ui button">Ajouter</div>
         </div>
-        <div class="three wide column">
-          <button class="positive fluid ui button">Ajouter</button>
-        </div>
-        </div>
-      </div>
-    </div> *}
         <div class="field {if not empty(form_error('explanation'))}error{/if}">
           <label for="title">Explication</label>
           <textarea required rows="5" cols="50" name="explanation" placeholder="Explication">{'explanation'|set_value}</textarea>
@@ -136,10 +123,64 @@
 {/block}
 
 {block name="javascript"}
-  <script src="{base_url('assets/js/registration.js')}" charset="utf-8"></script>
-  <script>
-  $('select.dropdown')
-  .dropdown()
-;
+<script src="{base_url('assets/js/registration.js')}" charset="utf-8"></script>
+{literal}
+<script>
+  var id = 0;
+  //$('select.dropdown').dropdown();
+function new_ingredient() {
+    id = id + 1;
+    $("#ingredients").append(
+'  <div id="idg_'+id+'">'+
+'    <div id="dropdown_'+id+'" class="ui selection search dropdown">'+
+'      <input id="ingredient_'+id+'" name="ingredients['+id+'][ingredient]" type="hidden">'+
+'      <i class="dropdown icon"></i>'+
+'      <div class="default text">Ingrédient</div>'+
+'      <div class="menu">'+
+{/literal}
+       {foreach $ingredients as $i}
+{literal}
+'         <div class="item" data-value="{/literal}{$i.id}{literal}">'+
+'           <img class="ui mini avatar image" src="{/literal}{base_url('media/illustrations/')}{$i.illustration}{literal}">'+
+'           {/literal}{$i.label}{literal}'+
+'         </div>'+
+{/literal}
+       {/foreach}
+{literal}
+'      </div>'+
+'    </div>'+
+'    <div class="ui input">'+
+'      <input id="quantity_'+id+'" type="number" name="ingredients['+id+'][quantity]"  min="1" value="1">'+
+'    </div>'+
+'    <select id="unit_'+id+'" name="ingredients['+id+'][unit]" class="ui search dropdown">'+
+'      <option value="">Unité</option>'+
+{/literal}
+       {foreach $units as $u}
+{literal}
+'      <option value="{/literal}{$u.id}{literal}">{/literal}{$u.label}{literal}</option>'+
+{/literal}
+       {/foreach}
+{literal}
+'    </select>'+
+'    <div id="idg_remove_'+id+'" class="negative ui button">Supprimer</div><br>'+
+'  </div>');
+
+   var my_id = id;
+   $('#idg_remove_'+id).click(function(){
+      $("#idg_"+my_id).remove();
+   });
+
+   $('#dropdown_'+id).dropdown();
+   $('#unit_'+id).dropdown();
+}
+$("#new_ingredient").click(new_ingredient);
+{/literal}
+{foreach set_value('ingredients', array()) as $i}
+new_ingredient();
+$('#ingredient_'+id).val({$i.ingredient});
+$('#quantity_'+id).val({$i.quantity});
+$('#unit_'+id).val({$i.unit});
+{/foreach}
+$('.ui.dropdown').dropdown();
 </script>
 {/block}
