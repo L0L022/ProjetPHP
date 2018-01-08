@@ -6,7 +6,7 @@
 </a>
 {if $user_id !== null}
 <a class="{if $page eq 'profile'}active{/if} item" href="{site_url('profile/view/')}{$user_id}">
-  Profil
+  Mon profil
 </a>
 {/if}
 <div class="right menu">

@@ -9,7 +9,7 @@
   {foreach $categories as $c}
   <a class="item" href="{site_url('recipe/category/')}{$c.id}">
     <div class="ui small rounded image">
-      <img src="{base_url('media/categories/')}{$c.illustration}">
+      <img src="{base_url('media/illustrations/')}{$c.illustration}">
     </div>
     <div class="middle aligned content">
       <div class="header">{$c.label}</div>

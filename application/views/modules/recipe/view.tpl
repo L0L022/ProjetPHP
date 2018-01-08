@@ -32,25 +32,35 @@
       <div class="four wide column">
         <img class="ui fluid rounded image" src="{if $recipe.illustration eq ''}{base_url('media/illustrations/recipe.png')}{else}{base_url('media/illustrations/')}{$recipe.illustration}{/if}">
       </div>
-      <div class="twelve wide column">
+      <div class="eight wide column">
         {$recipe.description}
-        <div class="ui horizontal segments">
-          <div class="ui black segment">
-            <p>{if $recipe.result_type eq "person"}<i class="disabled users icon"></i> Recette pour {$recipe.result_amount} personnes {else}<i class="disabled cubes icon"></i> Recette pour {$recipe.result_amount} unitées{/if}</p>
-          </div>
-          <div class="ui black segment">
-            <p><i class="hourglass half icon"></i> {$recipe.time_preparation|date_format:'%H'}h{$recipe.time_preparation|date_format:'%M'} de preparation</p>
-          </div>
-          <div class="ui black segment">
-            <p><i class="hourglass half icon"></i> {$recipe.time_cooking|date_format:'%H'}h{$recipe.time_cooking|date_format:'%M'} pour cuire</p>
-          </div>
-          <div class="ui black segment">
-            <p><i class="wait half icon"></i> {$recipe.time_rest|date_format:'%H'}h{$recipe.time_rest|date_format:'%M'} de repos</p>
-</div>
-</div>
       </div>
-    </div>
+      <div class="four wide column">
+        <div class="ui top attached basic segment">
+          <p><i class="hand rock icon"></i> Difficulté de la recette {if $recipe.difficulty eq 'easy'} facile {elseif $recipe.difficulty eq 'medium'} moyenne {else} Difficile {/if}</p>
+        </div>
+        <div class="ui attached basic segment">
+          <p><i class="euro icon"></i> Coût de la recette {if $recipe.cost eq 'low'} faible {elseif $recipe.cost eq 'average'} moyen {else} Élevé {/if}</p>
+        </div>
+        <div class="ui attached basic segment">
+          <p>{if $recipe.result_type eq "person"}<i class="disabled users icon"></i> Recette pour {$recipe.result_amount} personnes {else}<i class="disabled cubes icon"></i> Recette pour {$recipe.result_amount} unitées{/if}</p>
+        </div>
+      </div>
+      </div>
   </div>
+</div>
+
+<div class="ui horizontal segments">
+
+  <div class="ui black segment">
+    <p><i class="hourglass half icon"></i> {$recipe.time_preparation|date_format:'%H'}h{$recipe.time_preparation|date_format:'%M'} de preparation</p>
+  </div>
+  <div class="ui black segment">
+    <p><i class="hourglass half icon"></i> {$recipe.time_cooking|date_format:'%H'}h{$recipe.time_cooking|date_format:'%M'} pour cuire</p>
+  </div>
+  <div class="ui black segment">
+    <p><i class="wait half icon"></i> {$recipe.time_rest|date_format:'%H'}h{$recipe.time_rest|date_format:'%M'} de repos</p>
+</div>
 </div>
 
 <div class="ui grid">
