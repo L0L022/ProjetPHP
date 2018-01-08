@@ -50,7 +50,7 @@ class Recipe_model extends DB_model
         $this->db->select($this->user_model->get_select('user_'));
         $this->db->order_by($this->comment_model->get_columns()['date'], 'DESC');
         $this->db->from($this->comment_model->table);
-        $this->db->join($this->user_model->get_table(), $this->user_model->get_table().'.'.$this->user_model->get_columns()['id'].'='.$this->comment_model->table.'.'.$this->comment_model->columns['creator']);
+        $this->db->join($this->user_model->get_table(), $this->user_model->get_table().'.'.$this->user_model->get_columns()['id'].'='.$this->comment_model->table.'.'.$this->comment_model->columns['creator'], 'left');
         $this->db->where($this->comment_model->to_real_name(array('recipe' => $id)));
         $query = $this->db->get();
         return $query->result_array();
