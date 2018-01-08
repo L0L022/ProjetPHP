@@ -237,6 +237,9 @@ class Profile extends MY_Controller
 
         if ($this->form_validation->run()) {
             $this->user_model->delete(array('id' => $id));
+            if ($this->user_id === $id) {
+                $this->user_id = null;
+            }
             $data['success'] = true;
         } else {
             $data['errors'] = $this->form_validation->error_array();
