@@ -49,8 +49,10 @@
         </div>
         <div class="field {if not empty(form_error('ingredients'))}error{/if}">
           <label>Ingrédients</label>
+          <div class="ui center aligned segment">
           <div id="ingredients"></div>
           <div id="new_ingredient" class="positive ui button">Ajouter</div>
+          </div>
         </div>
         <div class="field {if not empty(form_error('explanation'))}error{/if}">
           <label for="title">Explication</label>
@@ -132,7 +134,10 @@ function new_ingredient() {
     id = id + 1;
     $("#ingredients").append(
 '  <div id="idg_'+id+'">'+
-'    <div id="dropdown_'+id+'" class="ui selection search dropdown">'+
+'   <div class="ui grid">'+
+'     <div class="row">'+
+'     <div class="four wide column">'+
+'    <div id="dropdown_'+id+'" class="ui fluid selection search dropdown">'+
 '      <input id="ingredient_'+id+'" name="ingredients['+id+'][ingredient]" type="hidden">'+
 '      <i class="dropdown icon"></i>'+
 '      <div class="default text">Ingrédient</div>'+
@@ -149,10 +154,14 @@ function new_ingredient() {
 {literal}
 '      </div>'+
 '    </div>'+
-'    <div class="ui input">'+
+'     </div>'+
+'     <div class="four wide column">'+
+'    <div class="ui fluid input">'+
 '      <input id="quantity_'+id+'" type="number" name="ingredients['+id+'][quantity]"  min="1" value="1">'+
 '    </div>'+
-'    <select id="unit_'+id+'" name="ingredients['+id+'][unit]" class="ui search dropdown">'+
+'     </div>'+
+'     <div class="four wide column">'+
+'    <select id="unit_'+id+'" name="ingredients['+id+'][unit]" class="ui fluid search dropdown">'+
 '      <option value="">Unité</option>'+
 {/literal}
        {foreach $units as $u}
@@ -162,7 +171,13 @@ function new_ingredient() {
        {/foreach}
 {literal}
 '    </select>'+
-'    <div id="idg_remove_'+id+'" class="negative ui button">Supprimer</div><br>'+
+'     </div>'+
+'     <div class="four wide column">'+
+'    <div id="idg_remove_'+id+'" class="negative fluid ui button">Supprimer</div>'+
+'     </div>'+
+'     </div>'+
+'     </div>'+
+'<br>'+
 '  </div>');
 
    var my_id = id;
