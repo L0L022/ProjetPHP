@@ -20,7 +20,7 @@ class Profile extends MY_Controller
         $data = &$this->data;
         $data['id'] = $id;
         $data['user'] = $user;
-        $data['editable'] = true;
+        $data['editable'] = $this->user_id === $id;
         $this->parser->parse('modules/profile/view.tpl', $data);
     }
 

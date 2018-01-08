@@ -10,13 +10,6 @@
 </a>
 {/if}
 <div class="right menu">
-  <div class="ui category search item">
-    <div class="ui transparent icon input">
-      <input class="prompt" placeholder="Rechercher une recette..." type="text">
-      <i class="search link icon"></i>
-    </div>
-    <div class="results"></div>
-  </div>
   {if $user_id === null}
   <form action="{site_url('connection')}" method="post" accept-charset="utf-8">
     {if $page !== 'connection'}

@@ -1,7 +1,7 @@
 {extends file="../../layout.tpl"}
 
 {block name="css"}
-<link rel="stylesheet" type="text/css" href="{base_url('assets/css/registration.css')}">
+<!-- <link rel="stylesheet" type="text/css" href="{base_url('assets/css/registration.css')}"> -->
 {/block}
 
 {block name="body"}
@@ -146,7 +146,7 @@ function new_ingredient() {
        {foreach $ingredients as $i}
 {literal}
 '         <div class="item" data-value="{/literal}{$i.id}{literal}">'+
-'           <img class="ui mini avatar image" src="{/literal}{base_url('media/illustrations/')}{$i.illustration}{literal}">'+
+'           <!-- <img class="ui mini avatar image" src="{/literal}{base_url('media/illustrations/')}{$i.illustration}{literal}"> -->'+
 '           {/literal}{$i.label}{literal}'+
 '         </div>'+
 {/literal}

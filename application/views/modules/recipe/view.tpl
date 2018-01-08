@@ -37,6 +37,20 @@
       </div>
       <div class="four wide column">
         <div class="ui top attached basic segment">
+          <div class="ui relaxed divided list">
+          {foreach $categories as $c}
+          <div class="item">
+            <img class="ui mini rounded image" src="{base_url('media/illustrations/')}{$c.illustration}">
+            <!-- <i class="large github middle aligned icon"></i> -->
+            <div class="content">
+              <a class="header" href="{site_url('recipe/category/')}{$c.id}">{$c.label}</a>
+              <!-- <div class="description">Updated 10 mins ago</div> -->
+            </div>
+          </div>
+          {/foreach}
+          </div>
+        </div>
+        <div class="ui attached basic segment">
           <p><i class="hand rock icon"></i> Difficulté de la recette {if $recipe.difficulty eq 'easy'} facile {elseif $recipe.difficulty eq 'medium'} moyenne {else} Difficile {/if}</p>
         </div>
         <div class="ui attached basic segment">
@@ -109,7 +123,7 @@
         <img class="ui small rounded image" src="{if $c.user_avatar eq ''}{base_url('media/avatars/none.png')}{else}{base_url('media/avatars/')}{$c.user_avatar}{/if}">{/if}
     </a>
     <div class="content">
-      <a class="author" href="{site_url('profile/view/')}{$c.creator}">{if $c.creator == null}Anonyme{else}{$c.user_login}{/if}</a>
+      {if $c.creator !== null}<a class="author" href="{site_url('profile/view/')}{$c.creator}">{$c.user_login}</a>{else}Anonyme{/if}
       <div class="metadata">
         <div class="date">Le {$c.date|date_format}</div>
       </div>

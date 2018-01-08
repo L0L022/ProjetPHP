@@ -16,7 +16,7 @@ class MY_Controller extends CI_Controller
         $data['page'] = $page;
         $data['user_id'] = &$_SESSION['user_id'];
 
-        $this->output->enable_profiler();
+        // $this->output->enable_profiler();
     }
 
     protected function _redirect()
