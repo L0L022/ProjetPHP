@@ -18,7 +18,7 @@
         </form>
       </div>
       <div class="eight wide column">
-        <h2 class="ui header">{if $new === true}Nouvelle recette{else}Modifier une recette{/if}</h2>
+        <h2 class="ui header">{if $new === true}Nouvelle recette{else}Modifier la recette {'title'|set_value}{/if}</h2>
       </div>
       <div class="four wide column">
       </div>

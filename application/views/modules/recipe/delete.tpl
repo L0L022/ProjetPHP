@@ -17,7 +17,7 @@
         </form>
       </div>
       <div class="eight wide column">
-        <h2 class="ui header">Supprimer votre recette</h2>
+        <h2 class="ui header">Supprimer la recette {$recipe.title}</h2>
       </div>
       <div class="four wide column">
       </div>

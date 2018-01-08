@@ -17,7 +17,7 @@
         </form>
       </div>
       <div class="eight wide column">
-        <h2 class="ui header">Modification de l'illustration</h2>
+        <h2 class="ui header">Modification l'illustration de {$recipe.title}</h2>
       </div>
       <div class="four wide column">
       </div>
